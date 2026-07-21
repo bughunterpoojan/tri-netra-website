@@ -35,7 +35,7 @@ const Footer = () => {
             <h4 className="font-black text-[#050505] uppercase tracking-widest text-sm mb-8">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-center gap-3 text-[#050505]/40 hover:text-[#050505] transition-colors cursor-default">
-                <Mail className="w-4 h-4" /> hello@trinetra.tech
+                <Mail className="w-4 h-4" /> trinetratechnologies4@gmail.com
               </li>
               <li className="flex items-center gap-3 text-[#050505]/40 hover:text-[#050505] transition-colors cursor-default">
                 <MapPin className="w-4 h-4" /> Ahmedabad, India
