@@ -20,6 +20,7 @@ const Navbar = () => {
     { name: "Services", href: "#services" },
     { name: "Shift", href: "#the-shift" },
     { name: "Process", href: "#process" },
+    { name: "Resources", href: "#resources" },
     { name: "FAQs", href: "#why-automate" },
     { name: "Pricing", href: "#pricing" },
   ];
@@ -36,7 +37,11 @@ const Navbar = () => {
       >
         {/* Logo */}
         <div className="flex items-center gap-2 group">
-          <img src="/logo.png" alt="Logo" className="w-10 h-10 object-contain" />
+          <img 
+            src="/logo.png" 
+            alt="TriNetra Technologies - AI Automation Agency" 
+            className="w-10 h-10 object-contain" 
+          />
           <span className="text-2xl font-bold tracking-tighter text-[#050505]">TriNetra Technologies</span>
         </div>
 

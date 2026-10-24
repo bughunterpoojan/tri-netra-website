@@ -11,6 +11,7 @@ import Solutions from "./components/Solutions";
 import Process from "./components/Process";
 import AutomationDemo from "./components/AutomationDemo";
 import Pricing from "./components/Pricing";
+import Resources from "./components/Resources";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 
@@ -60,6 +61,7 @@ function App() {
           <TheShift />
           <Process />
           <AutomationDemo />
+          <Resources />
           <Pricing />
           <CTA />
         </main>

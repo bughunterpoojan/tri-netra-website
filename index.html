@@ -1,39 +1,59 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <link rel="apple-touch-icon" href="/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TriNetra Technologies | AI Automation Agency</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <script type="text/javascript">
-      (function (C, A, L) {
-        let p = function (a, ar) { a.q.push(ar); };
-        let d = C.document; C.Cal = C.Cal || function () {
-          let cal = C.Cal; let ar = arguments;
-          if (!cal.loaded) {
-            cal.ns = {}; cal.q = cal.q || [];
-            d.head.appendChild(d.createElement("script")).src = A;
-            cal.loaded = true;
-          }
-          if (ar[0] === L) {
-            const api = function () { p(api, arguments); };
-            const ns = ar[1]; api.q = api.q || [];
-            typeof ns === "string" ? (cal.ns[ns] = api) && p(api, ar) : p(cal, ar);
-            return;
-          }
-          p(cal, ar);
-        };
-      })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", {origin: "https://cal.com"});
-      Cal("ui", {"styles":{"branding":{"brandColor":"#0066ff"}},"hideEventTypeDetails":false,"layout":"month_view"});
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Automation Agency & Custom Workflows | TriNetra</title>
+  <meta name="description" content="TriNetra is an AI automation agency building custom workflows to eliminate bottlenecks. Scale your business operations 24/7. Book a free consultation today!" />
+
+  <!-- Targeted SEO Keywords (30 High-Intent Search Keywords) -->
+  <meta name="keywords" content="WhatsApp Agent, WhatsApp AI Automation, Scale Business, Automation Company, AI Automation Agency, Custom AI Workflows, Business Process Automation, Lead Generation Automation, AI Chatbot Integration, CRM Automation, Customer Support AI Agent, Enterprise AI Solutions, Intelligent Workflow Automation, Automated Sales Outreach, AI Consulting Services, Robotic Process Automation RPA, Automated Appointment Booking, 24/7 AI Customer Service, Scale Business Operations, Small Business AI Automation, AI Lead Qualification, Zapier and Make Automation, AI Voice Calling Agent, Operations Bottleneck Solutions, Autonomous AI Agents, Custom LLM Solutions, Marketing Automation Agency, AI Systems Integration, Workflow Optimization Agency, AI Powered Growth" />
+
+  <!-- Schema.org Structured Data (JSON-LD) for Search Engine Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "TriNetra Technologies",
+    "description": "AI Automation Agency building custom workflows and AI agents to eliminate bottlenecks and scale business operations.",
+    "keywords": "WhatsApp Agent, Scale Business, Automation Company, AI Automation Agency, Custom AI Workflows, Customer Support AI Agent, CRM Automation"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <script type="text/javascript">
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document; C.Cal = C.Cal || function () {
+        let cal = C.Cal; let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {}; cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const ns = ar[1]; api.q = api.q || [];
+          typeof ns === "string" ? (cal.ns[ns] = api) && p(api, ar) : p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", { origin: "https://cal.com" });
+    Cal("ui", { "styles": { "branding": { "brandColor": "#0066ff" } }, "hideEventTypeDetails": false, "layout": "month_view" });
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>

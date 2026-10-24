@@ -78,8 +78,8 @@ const services = [
     }
   },
   {
-    title: "AI Sales Agents",
-    description: "Autonomous agents that qualify, handle objections, and close — over chat or voice",
+    title: "WhatsApp & Sales AI Agents",
+    description: "Autonomous WhatsApp agents that qualify leads, handle objections, and close — 24/7 over chat or voice",
     icon: <Bot className="w-8 h-8" />,
     color: "from-orange-500 to-red-500",
     details: {

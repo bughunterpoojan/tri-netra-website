@@ -8,7 +8,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-8 group">
-              <img src="/logo.png" alt="Logo" className="w-12 h-12 object-contain" />
+              <img 
+                src="/logo.png" 
+                alt="TriNetra Technologies - AI Automation Agency" 
+                className="w-12 h-12 object-contain" 
+              />
               <span className="text-3xl font-black tracking-tighter text-[#050505]">TriNetra Technologies</span>
             </div>
             <p className="text-[#050505]/50 max-w-sm mb-8 font-medium leading-relaxed">
@@ -25,8 +29,8 @@ const Footer = () => {
             <h4 className="font-black text-[#050505] uppercase tracking-widest text-sm mb-8">Navigation</h4>
             <ul className="space-y-4">
               <FooterLink href="#services">Services</FooterLink>
-              <FooterLink href="#solutions">Solutions</FooterLink>
               <FooterLink href="#process">Process</FooterLink>
+              <FooterLink href="#resources">Resources & Guides</FooterLink>
               <FooterLink href="#pricing">Pricing</FooterLink>
             </ul>
           </div>
