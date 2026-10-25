@@ -10,43 +10,43 @@ const WhyAutomate = () => {
   const cards = [
     {
       icon: <Building2 className="w-8 h-8" />,
-      title: "Too small for AI?",
-      body: "You don't need an enterprise budget — you need the one system that fixes your biggest bottleneck."
+      title: "Is my business too small for AI automation?",
+      body: "You don't need an enterprise budget. TriNetra Technologies designs lean, focused systems that eliminate your single biggest operational bottleneck and deliver immediate ROI."
     },
     {
       icon: <RefreshCw className="w-8 h-8" />,
-      title: "Tried automation before?",
-      body: "Most automation fails because it's templated. We build around how you actually work."
+      title: "Why does typical automation fail?",
+      body: "Most agency automation fails because it relies on rigid generic templates. We map and engineer workflows around your exact business logic and existing tool stack."
     },
     {
       icon: <Wallet className="w-8 h-8" />,
-      title: "Worried about cost?",
-      body: "It's priced against the leads and hours you're already losing — not against doing nothing."
+      title: "What is the true cost and ROI?",
+      body: "Our solutions are priced against the high-value leads and weekly staff hours you're currently losing — paying for themselves in saved labor and captured revenue."
     },
     {
       icon: <Clock className="w-8 h-8" />,
-      title: "No time to set it up?",
-      body: "We handle the build. Your team shows up to something that already works."
+      title: "How long does setup take?",
+      body: "We manage the entire engineering, API integration, and testing cycle. Your team simply steps into a fully operational, automated pipeline within days."
     },
     {
       icon: <ShieldAlert className="w-8 h-8" />,
-      title: "What if it breaks and I'm stuck?",
-      body: "Most systems fail silently and nobody knows until a lead's already gone cold. Ours are built with monitoring and fallbacks — so if something breaks, you know before your customer does."
+      title: "What if a workflow breaks or encounters errors?",
+      body: "Unlike amateur bots that fail silently, TriNetra builds automated fallback loops, uptime monitoring, and instant alert notifications so issues are handled before clients notice."
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Will this replace my team?",
-      body: "It's not replacing your team — it's removing the work your best people shouldn't be doing in the first place. The question is what they'd close if they weren't buried in admin."
+      title: "Will AI employees replace my human team?",
+      body: "No. AI employees eliminate repetitive admin work like data entry, manual follow-ups, and calendar ping-pong, enabling your top people to focus on high-ticket closing and client care."
     },
     {
       icon: <Map className="w-8 h-8" />,
-      title: "How do I know it'll work for my business?",
-      body: "You don't, based on someone else's case study. That's why we map your actual process first — so you're not betting on a guess."
+      title: "How do I know it will work for my industry?",
+      body: "We map your actual customer journey and operational handoffs before writing a single line of automation code, eliminating guesswork and guaranteeing workflow alignment."
     },
     {
       icon: <MessageSquare className="w-8 h-8" />,
-      title: "Isn't this just a chatbot with extra steps?",
-      body: "A chatbot answers questions. What we build qualifies, books, follows up, and updates your CRM — the difference is whether it just talks, or actually moves your pipeline forward."
+      title: "How is an AI agent different from a standard chatbot?",
+      body: "A basic chatbot only matches canned FAQ answers. TriNetra's WhatsApp and web AI agents actively qualify budgets, handle sales objections, schedule calendar slots, and sync live CRM deals."
     }
   ];
 

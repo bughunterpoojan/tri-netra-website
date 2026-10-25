@@ -222,22 +222,32 @@ const Services = () => {
     <section id="services" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-4"
+          >
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">
+              AI Automation Services
+            </span>
+          </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-[#050505]"
           >
-            Capabilities That <span className="text-primary italic">Scale</span>.
+            Capabilities That <span className="text-primary italic">Scale Your Business</span>.
           </motion.h2>
           <motion.p 
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
              transition={{ delay: 0.1 }}
-            className="text-[#050505]/60 text-lg max-w-2xl mx-auto"
+            className="text-[#050505]/60 text-lg max-w-3xl mx-auto leading-relaxed"
           >
-            Replace manual labor with high-performance AI systems designed to grow with you.
+            Replace repetitive manual admin with high-performance <strong className="text-[#050505]">WhatsApp AI agents</strong>, custom <strong className="text-[#050505]">n8n & CRM workflows</strong>, automated <strong className="text-[#050505]">lead generation</strong>, and autonomous AI employees engineered to grow with you.
           </motion.p>
         </div>
 

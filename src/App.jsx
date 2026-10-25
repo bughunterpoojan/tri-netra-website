@@ -12,6 +12,7 @@ import Process from "./components/Process";
 import AutomationDemo from "./components/AutomationDemo";
 import Pricing from "./components/Pricing";
 import Resources from "./components/Resources";
+import SearchKeywords from "./components/SearchKeywords";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 
@@ -57,6 +58,7 @@ function App() {
           <Hero />
           <Services />
           <Industries />
+          <SearchKeywords />
           <WhyAutomate />
           <TheShift />
           <Process />

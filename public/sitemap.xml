@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.trinetra-technologies.in/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.trinetra-technologies.in/logo.png</image:loc>
+      <image:title>TriNetra Technologies - AI Automation Agency</image:title>
+      <image:caption>TriNetra Technologies builds custom AI workflows, WhatsApp AI agents, and autonomous systems.</image:caption>
+    </image:image>
+  </url>
+</urlset>

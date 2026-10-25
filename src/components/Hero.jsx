@@ -31,10 +31,10 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-8 backdrop-blur-sm shadow-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6 backdrop-blur-sm shadow-sm"
         >
           <span className="flex h-2 w-2 rounded-full bg-primary animate-ping" />
-          <span className="text-xs font-black uppercase tracking-[0.2em] text-primary">Intelligence in Motion</span>
+          <span className="text-xs font-black uppercase tracking-[0.2em] text-primary">TriNetra Technologies • Premier AI Automation Agency</span>
         </motion.div>
 
         <motion.h1 
@@ -51,10 +51,34 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg md:text-xl text-[#050505]/60 max-w-3xl mx-auto mb-12"
+          className="text-lg md:text-xl text-[#050505]/60 max-w-3xl mx-auto mb-8 font-medium leading-relaxed"
         >
-          Whatever the bottleneck — leads, follow-ups, support, operations — we build AI systems that handle it, around the clock.
+          <strong className="text-[#050505] font-bold">TriNetra Technologies</strong> builds high-performance <strong className="text-[#050505] font-bold">WhatsApp AI agents</strong>, automated <strong className="text-[#050505] font-bold">lead generation pipelines</strong>, real-time <strong className="text-[#050505] font-bold">CRM workflows</strong>, and autonomous AI employees that eliminate manual bottlenecks and scale your revenue 24/7.
         </motion.p>
+
+        {/* High-Intent Search Keyword Tags */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto mb-10"
+        >
+          {[
+            "WhatsApp AI Agent",
+            "Custom AI Workflows",
+            "CRM Automation (HubSpot & n8n)",
+            "AI Cold Email Systems",
+            "Autonomous AI Employees",
+            "24/7 Lead Qualification"
+          ].map((tag, idx) => (
+            <span
+              key={idx}
+              className="text-xs font-semibold px-3 py-1.5 rounded-full bg-black/[0.03] border border-black/5 text-[#050505]/70 hover:border-primary/30 transition-colors"
+            >
+              #{tag}
+            </span>
+          ))}
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}

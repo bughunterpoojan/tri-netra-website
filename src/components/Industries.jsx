@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { 
   Building2, Monitor, Stethoscope, ShoppingCart, Users2, 
-  ArrowUpRight, Sparkles, Megaphone, HeartPulse, UserSearch
+  ArrowUpRight, Sparkles, Megaphone, HeartPulse, UserSearch, Briefcase
 } from "lucide-react";
 
 const industries = [
@@ -27,7 +27,7 @@ const industries = [
     borderHover: "hover:border-amber-300"
   },
   {
-    title: "E-Commerce",
+    title: "E-Commerce & D2C",
     stat: "Cart",
     statLabel: "Recovery — automated follow-ups for every abandoned order",
     icon: <ShoppingCart className="w-6 h-6" />,
@@ -37,7 +37,7 @@ const industries = [
     borderHover: "hover:border-emerald-300"
   },
   {
-    title: "Recruitment",
+    title: "Recruitment & HR",
     stat: "Vetted",
     statLabel: "before you blink — Candidates screened the moment they apply",
     icon: <UserSearch className="w-6 h-6" />,
@@ -45,6 +45,46 @@ const industries = [
     bgAccent: "bg-violet-600/10",
     gradient: "from-violet-600/5",
     borderHover: "hover:border-violet-300"
+  },
+  {
+    title: "Healthcare & Clinics",
+    stat: "24/7",
+    statLabel: "Patient triage & automated appointment scheduling",
+    icon: <Stethoscope className="w-6 h-6" />,
+    accent: "text-rose-600",
+    bgAccent: "bg-rose-600/10",
+    gradient: "from-rose-600/5",
+    borderHover: "hover:border-rose-300"
+  },
+  {
+    title: "B2B SaaS & Tech",
+    stat: "Instant",
+    statLabel: "Demo qualification & product activation flows",
+    icon: <Monitor className="w-6 h-6" />,
+    accent: "text-cyan-600",
+    bgAccent: "bg-cyan-600/10",
+    gradient: "from-cyan-600/5",
+    borderHover: "hover:border-cyan-300"
+  },
+  {
+    title: "Finance & Legal",
+    stat: "100%",
+    statLabel: "Automated document gathering & KYC verification",
+    icon: <Briefcase className="w-6 h-6" />,
+    accent: "text-indigo-600",
+    bgAccent: "bg-indigo-600/10",
+    gradient: "from-indigo-600/5",
+    borderHover: "hover:border-indigo-300"
+  },
+  {
+    title: "Logistics & Operations",
+    stat: "Real-time",
+    statLabel: "Vendor communication & automated order tracking",
+    icon: <Users2 className="w-6 h-6" />,
+    accent: "text-teal-600",
+    bgAccent: "bg-teal-600/10",
+    gradient: "from-teal-600/5",
+    borderHover: "hover:border-teal-300"
   }
 ];
 
@@ -67,11 +107,11 @@ const Industries = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-black text-zinc-900 tracking-tight"
           >
-            Tailored Solutions for <span className="text-blue-600">Every Industry</span>.
+            Tailored AI Solutions for <span className="text-blue-600">Every Industry</span>.
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {industries.map((item, index) => (
             <IndustryCard key={index} item={item} index={index} />
           ))}
