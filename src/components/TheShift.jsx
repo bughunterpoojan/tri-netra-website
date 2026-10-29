@@ -92,7 +92,7 @@ const TheShift = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-[#050505] tracking-tight leading-[1.15] mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#050505] tracking-tight leading-[1.18] sm:leading-[1.15] mb-6"
           >
             From <span className="text-primary">Manual</span> Hustle <br className="hidden md:inline" />
             to <span className="text-primary">Autonomous</span> Growth

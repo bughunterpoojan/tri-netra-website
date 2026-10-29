@@ -132,12 +132,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-3 md:p-5 pointer-events-none">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-2 sm:p-3 md:p-5 pointer-events-none">
       <motion.div
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`pointer-events-auto flex items-center justify-between px-5 py-2.5 md:px-7 transition-all duration-300 w-full ${
+        className={`pointer-events-auto flex items-center justify-between px-3.5 sm:px-5 py-2 md:py-2.5 md:px-7 transition-all duration-300 w-full ${
           isScrolled 
             ? "max-w-6xl bg-white/90 backdrop-blur-xl border border-black/10 shadow-[0_8px_32px_rgba(0,0,0,0.08)] rounded-full md:py-2.5" 
             : "max-w-7xl bg-white/80 backdrop-blur-md border border-black/5 shadow-[0_4px_24px_rgba(0,0,0,0.04)] rounded-full md:py-3.5"
@@ -148,22 +148,22 @@ const Navbar = () => {
           to="/" 
           onClick={(e) => handleNavClick(e, "/")}
           aria-label="TriNetra Technologies Home"
-          className="flex items-center gap-3 shrink-0 group focus:outline-hidden cursor-pointer"
+          className="flex items-center gap-2 sm:gap-3 shrink-0 group focus:outline-hidden cursor-pointer"
         >
           <img 
             src="/logo.png" 
             alt="TriNetra Technologies - Full-Suite IT Services & AI Automation" 
             width="40"
             height="40"
-            className="w-9 h-9 md:w-10 md:h-10 object-contain group-hover:scale-105 transition-transform" 
+            className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 object-contain group-hover:scale-105 transition-transform" 
           />
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
-              <span className="text-lg md:text-xl font-black tracking-tight text-[#050505] whitespace-nowrap">
+              <span className="text-sm sm:text-base md:text-xl font-black tracking-tight text-[#050505] whitespace-nowrap">
                 TriNetra <span className="text-primary font-bold">Technologies</span>
               </span>
             </div>
-            <span className="text-[10px] font-semibold text-[#050505]/50 tracking-wider uppercase -mt-0.5 hidden lg:block whitespace-nowrap">
+            <span className="text-[9px] sm:text-[10px] font-semibold text-[#050505]/50 tracking-wider uppercase -mt-0.5 hidden lg:block whitespace-nowrap">
               IT Services & AI Solutions
             </span>
           </div>
@@ -269,10 +269,10 @@ const Navbar = () => {
         </div>
 
         {/* Right: CTA & Contact Button */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <button 
             onClick={handleBookCall}
-            className="whitespace-nowrap px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-bold text-white bg-primary rounded-full hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/25 active:scale-95 flex items-center gap-2 shrink-0 shadow-sm cursor-pointer"
+            className="hidden md:inline-flex whitespace-nowrap px-3.5 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-bold text-white bg-primary rounded-full hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/25 active:scale-95 items-center gap-1.5 sm:gap-2 shrink-0 shadow-sm cursor-pointer"
           >
             <span>Book Strategy Call</span>
             <ArrowRight className="w-3.5 h-3.5 hidden sm:inline" />
@@ -280,11 +280,11 @@ const Navbar = () => {
 
           {/* Mobile menu toggle */}
           <button 
-            className="lg:hidden p-2 text-[#050505] rounded-full hover:bg-black/5 transition-colors cursor-pointer"
+            className="lg:hidden p-1.5 sm:p-2 text-[#050505] rounded-full hover:bg-black/5 transition-colors cursor-pointer shrink-0"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </motion.div>
@@ -297,8 +297,19 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -15, scale: 0.98 }}
             transition={{ duration: 0.25 }}
-            className="absolute top-20 left-4 right-4 lg:hidden pointer-events-auto bg-white/95 backdrop-blur-2xl p-6 rounded-3xl flex flex-col gap-3 border border-black/10 shadow-[0_24px_64px_rgba(0,0,0,0.15)] max-h-[85vh] overflow-y-auto"
+            className="absolute top-16 sm:top-20 left-2.5 right-2.5 sm:left-4 sm:right-4 lg:hidden pointer-events-auto bg-white/95 backdrop-blur-2xl p-5 sm:p-6 rounded-3xl flex flex-col gap-3 border border-black/10 shadow-[0_24px_64px_rgba(0,0,0,0.15)] max-h-[85vh] overflow-y-auto"
           >
+            {/* Mobile Top Booking Action */}
+            <div className="md:hidden pb-3 border-b border-black/5">
+              <button 
+                onClick={handleBookCall}
+                className="w-full py-3 px-5 text-white bg-primary rounded-2xl font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-primary/25 cursor-pointer"
+              >
+                <span>Book Strategy Call</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+
             {/* Services Accordion */}
             <div className="border-b border-black/5 pb-3">
               <button
@@ -348,7 +359,7 @@ const Navbar = () => {
                 key={link.name}
                 to={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-bold text-[#050505]/80 hover:text-primary py-1.5 transition-colors flex items-center justify-between cursor-pointer"
+                className="text-sm font-bold text-[#050505]/80 hover:text-primary py-2 transition-colors flex items-center justify-between cursor-pointer"
               >
                 <span>{link.name}</span>
                 <ArrowRight className="w-3.5 h-3.5 text-[#050505]/30" />
@@ -356,18 +367,14 @@ const Navbar = () => {
             ))}
 
             {/* Mobile Contact Quick Actions */}
-            <div className="pt-4 border-t border-black/5 space-y-2">
-              <div className="text-[11px] font-medium text-[#050505]/60 flex items-center gap-2">
+            <div className="pt-3 border-t border-black/5 space-y-2">
+              <a 
+                href="tel:+919274092055"
+                className="text-xs font-semibold text-[#050505]/70 hover:text-primary transition-colors flex items-center gap-2 py-1"
+              >
                 <Phone className="w-3.5 h-3.5 text-primary" />
                 <span>+91 9274092055</span>
-              </div>
-              <button 
-                onClick={handleBookCall}
-                className="w-full mt-2 py-3 px-5 text-white bg-primary rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-primary/25 cursor-pointer"
-              >
-                <span>Book Strategy Call</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           </motion.div>
         )}

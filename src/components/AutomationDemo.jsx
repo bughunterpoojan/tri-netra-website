@@ -32,7 +32,7 @@ const AutomationDemo = () => {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tighter text-[#050505]">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6 md:mb-8 tracking-tighter text-[#050505] leading-[1.18] sm:leading-[1.1]">
               Watch <span className="text-primary italic">Live</span> <br />
               Automation.
             </h2>

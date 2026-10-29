@@ -11,7 +11,7 @@ const Hero = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen pt-32 pb-20 overflow-hidden flex flex-col items-center justify-center"
+      className="relative min-h-[90vh] md:min-h-screen pt-28 sm:pt-32 pb-16 md:pb-20 overflow-hidden flex flex-col items-center justify-center"
     >
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
@@ -23,22 +23,24 @@ const Hero = () => {
         />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 text-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6 backdrop-blur-sm shadow-sm"
+          className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-primary/5 border border-primary/10 mb-5 sm:mb-6 backdrop-blur-sm shadow-sm max-w-full"
         >
-          <span className="flex h-2 w-2 rounded-full bg-primary animate-ping" />
-          <span className="text-xs font-black uppercase tracking-[0.2em] text-primary">TriNetra Technologies • Full-Suite IT Services & AI Solutions</span>
+          <span className="flex h-2 w-2 rounded-full bg-primary animate-ping shrink-0" />
+          <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.12em] sm:tracking-[0.2em] text-primary text-center">
+            TriNetra Technologies • Full-Suite IT Services & AI Solutions
+          </span>
         </motion.div>
 
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-8xl font-black tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-[#050505] to-[#050505]/60 leading-[1.1]"
+          className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-b from-[#050505] to-[#050505]/60 leading-[1.18] sm:leading-[1.1]"
         >
           Custom Software, Apps & <br className="hidden sm:inline" />
           Intelligent <span className="text-primary italic">AI Solutions.</span>
@@ -48,7 +50,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg md:text-xl text-[#050505]/65 max-w-3xl mx-auto mb-10 font-medium leading-relaxed"
+          className="text-sm sm:text-base md:text-xl text-[#050505]/65 max-w-3xl mx-auto mb-8 sm:mb-10 font-medium leading-relaxed px-2"
         >
           TriNetra Technologies engineers modern web applications, native mobile apps, enterprise cloud software, and autonomous AI systems designed to scale your business.
         </motion.p>
@@ -57,12 +59,12 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0"
         >
           <button 
             ref={magneticButtonRef}
             onClick={() => window.Cal && window.Cal("modal", { calLink: CONFIG.calLink })}
-            className="group relative px-8 py-4 bg-primary rounded-2xl font-bold flex items-center gap-2 overflow-hidden transition-all shadow-2xl shadow-primary/30"
+            className="w-full sm:w-auto group relative px-6 py-3.5 sm:px-8 sm:py-4 bg-primary rounded-2xl font-bold flex items-center justify-center gap-2 overflow-hidden transition-all shadow-2xl shadow-primary/30 text-sm sm:text-base"
           >
             <span className="relative z-10 flex items-center gap-2 text-white">
               Book a Call <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -71,9 +73,9 @@ const Hero = () => {
           </button>
           <button 
             onClick={() => { const el = document.getElementById("demo"); if (el) el.scrollIntoView({ behavior: "smooth" }); }} 
-            className="px-8 py-4 bg-black/5 border border-black/10 rounded-2xl font-bold flex items-center gap-2 hover:bg-black/10 transition-all hover:scale-105 active:scale-95 text-[#050505] cursor-pointer"
+            className="w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 bg-black/5 border border-black/10 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-black/10 transition-all hover:scale-105 active:scale-95 text-[#050505] cursor-pointer text-sm sm:text-base"
           >
-            <Play className="w-5 h-5 fill-[#050505]" /> Watch Demo
+            <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-[#050505]" /> Watch Demo
           </button>
         </motion.div>
 
@@ -82,9 +84,9 @@ const Hero = () => {
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.8 }}
-          className="mt-24 relative max-w-[90rem] mx-auto w-full px-4"
+          className="mt-14 sm:mt-24 relative max-w-[90rem] mx-auto w-full px-2 sm:px-4"
         >
-          <div className="glass rounded-[4rem] p-12 md:p-20 relative border border-black/[0.03] shadow-2xl shadow-black/[0.02] overflow-hidden">
+          <div className="glass rounded-[2rem] sm:rounded-[3rem] md:rounded-[4rem] p-6 sm:p-10 md:p-20 relative border border-black/[0.03] shadow-2xl shadow-black/[0.02] overflow-hidden">
             {/* Animated Connection Lines (Desktop) */}
             <div className="absolute top-1/2 left-0 w-full -translate-y-1/2 hidden md:block pointer-events-none opacity-20">
               <svg className="w-full h-[300px]" viewBox="0 0 1000 200" fill="none" preserveAspectRatio="none">
@@ -107,39 +109,39 @@ const Hero = () => {
               </svg>
             </div>
 
-            <div className="flex flex-wrap md:flex-row justify-between items-center gap-12 md:gap-4 relative z-10">
+            <div className="grid grid-cols-2 sm:grid-cols-4 md:flex md:flex-row justify-between items-center gap-8 sm:gap-6 md:gap-4 relative z-10">
               <WorkflowStep 
-                icon={<Database className="text-primary w-8 h-8 md:w-10 md:h-10" />} 
+                icon={<Database className="text-primary w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />} 
                 status="Active"
                 delay={0} 
               />
               <WorkflowStep 
-                icon={<Zap className="text-yellow-500 w-8 h-8 md:w-10 md:h-10" />} 
+                icon={<Zap className="text-yellow-500 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />} 
                 status="Active"
                 delay={0.1} 
               />
               <WorkflowStep 
-                icon={<MessageSquare className="text-secondary w-8 h-8 md:w-10 md:h-10" />} 
+                icon={<MessageSquare className="text-secondary w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />} 
                 status="Processing"
                 delay={0.2} 
               />
               <WorkflowStep 
-                icon={<Users className="text-blue-400 w-8 h-8 md:w-10 md:h-10" />} 
+                icon={<Users className="text-blue-400 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />} 
                 status="Active"
                 delay={0.3} 
               />
               <WorkflowStep 
-                icon={<Mail className="text-accent w-8 h-8 md:w-10 md:h-10" />} 
+                icon={<Mail className="text-accent w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />} 
                 status="Standby"
                 delay={0.4} 
               />
               <WorkflowStep 
-                icon={<Phone className="text-purple-400 w-8 h-8 md:w-10 md:h-10" />} 
+                icon={<Phone className="text-purple-400 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />} 
                 status="Standby"
                 delay={0.5} 
               />
               <WorkflowStep 
-                icon={<CheckCircle2 className="text-green-500 w-8 h-8 md:w-10 md:h-10" />} 
+                icon={<CheckCircle2 className="text-green-500 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />} 
                 status="Complete"
                 delay={0.6} 
               />
@@ -183,12 +185,12 @@ const WorkflowStep = ({ icon, status, delay }) => (
         <motion.div 
           animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0, 0.3] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="absolute inset-[-20px] rounded-[3rem] bg-primary/20 -z-10"
+          className="absolute inset-[-15px] sm:inset-[-20px] rounded-[2rem] sm:rounded-[3rem] bg-primary/20 -z-10"
         />
       )}
       
       {/* Huge Icon Container */}
-      <div className="w-20 h-20 md:w-32 md:h-32 rounded-[2rem] glass flex items-center justify-center text-4xl shadow-2xl shadow-black/[0.03] border border-black/[0.05] relative group-hover:scale-110 group-hover:shadow-primary/10 transition-all duration-700">
+      <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 rounded-2xl md:rounded-[2rem] glass flex items-center justify-center shadow-xl shadow-black/[0.03] border border-black/[0.05] relative group-hover:scale-110 group-hover:shadow-primary/10 transition-all duration-700">
         <div className="relative z-10">{icon}</div>
         
         {/* Large Progress Ring */}
@@ -213,16 +215,16 @@ const WorkflowStep = ({ icon, status, delay }) => (
       <motion.div 
         animate={{ y: [0, -4, 0] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-5 py-2 bg-white border border-black/[0.08] rounded-2xl shadow-lg shadow-black/[0.05]"
+        className="absolute -bottom-3 sm:-bottom-4 left-1/2 -translate-x-1/2 px-3 sm:px-5 py-1 sm:py-2 bg-white border border-black/[0.08] rounded-xl sm:rounded-2xl shadow-lg shadow-black/[0.05] whitespace-nowrap"
       >
-        <div className="flex items-center gap-2">
-          <span className={`w-2 h-2 rounded-full ${
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <span className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${
             status === "Active" ? "bg-blue-500 animate-pulse" :
             status === "Processing" ? "bg-orange-500 animate-spin" :
             status === "Complete" ? "bg-green-500" :
             "bg-gray-400"
           }`} />
-          <span className="text-[11px] font-black uppercase tracking-wider text-[#050505]/70">{status}</span>
+          <span className="text-[9px] sm:text-[11px] font-black uppercase tracking-wider text-[#050505]/70">{status}</span>
         </div>
       </motion.div>
     </div>

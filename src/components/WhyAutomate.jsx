@@ -75,7 +75,7 @@ const WhyAutomate = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-[#050505] tracking-tight leading-[1.15]"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#050505] tracking-tight leading-[1.2] sm:leading-[1.15]"
           >
             The Real <span className="text-primary">Question</span> Isn't 'Should I Automate.' <br className="hidden md:inline" />
             It's 'What Is <span className="text-primary">Manual Work</span> Already <span className="text-primary">Costing</span> Me?'

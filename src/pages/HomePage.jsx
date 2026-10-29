@@ -17,7 +17,7 @@ const HomePage = () => {
         title="Custom Software, Mobile Apps & AI Solutions | TriNetra Technologies"
         description="TriNetra Technologies engineers modern web applications, native mobile apps, custom enterprise software, and autonomous AI automation for growing businesses."
         canonical="https://www.trinetra-technologies.in/"
-        keywords="TriNetra Technologies, IT Services Company, Custom Software Development, Mobile App Development, Web Applications, AI Automation Agency, AI Agent Solutions, WhatsApp Automation, Enterprise Workflow Automation"
+        keywords="TriNetra Technologies, IT Services Company, Custom Software Development, Mobile App Development, iOS Android Apps, Web Applications, Enterprise SaaS, AI Automation Agency, AI Agent Solutions, WhatsApp Automation, AI Voice Agents, Enterprise Workflow Automation, CRM ERP Sync, Dedicated Engineering Teams, Virtual CTO, Software Maintenance SLA"
       />
       <main id="main-content">
         <Hero />

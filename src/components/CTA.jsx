@@ -35,17 +35,17 @@ const CTA = () => {
             className="flex flex-col items-center relative z-10"
           >
             <Sparkles className="w-16 h-16 text-primary mb-8" />
-            <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter max-w-4xl text-[#050505]">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-black mb-6 md:mb-8 tracking-tighter max-w-4xl text-[#050505] leading-[1.18] sm:leading-[1.1]">
               Stop Hiring For <br />
               <span className="text-primary italic">Repetitive Work</span>.
             </h2>
-            <p className="text-xl md:text-2xl text-[#050505]/60 mb-12 max-w-2xl font-medium">
+            <p className="text-base sm:text-xl md:text-2xl text-[#050505]/60 mb-8 sm:mb-12 max-w-2xl font-medium">
               Deploy AI Employees instead. Scale infinitely without the overhead.
             </p>
 
             <button 
               onClick={() => window.Cal && window.Cal("modal", { calLink: CONFIG.calLink })}
-              className="px-10 py-5 bg-[#050505] text-white rounded-2xl font-black text-xl flex items-center gap-3 hover:scale-110 active:scale-95 transition-all shadow-2xl shadow-black/10"
+              className="w-full sm:w-auto justify-center px-6 py-4 sm:px-10 sm:py-5 bg-[#050505] text-white rounded-2xl font-black text-base sm:text-xl flex items-center gap-3 hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-black/10"
             >
               Book Your Strategy Call <ArrowRight />
             </button>

@@ -106,7 +106,7 @@ const Process = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-[#050505]"
+            className="text-3xl sm:text-4xl md:text-6xl font-black mb-5 md:mb-6 tracking-tight text-[#050505] leading-[1.18] sm:leading-[1.1]"
           >
             Seamless <span className="text-primary italic">Transformation</span>.
           </motion.h2>
