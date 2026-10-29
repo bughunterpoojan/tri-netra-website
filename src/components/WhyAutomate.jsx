@@ -1,4 +1,4 @@
-import React from "react";
+
 import { motion } from "framer-motion";
 import { Building2, RefreshCw, Wallet, Clock, ArrowRight, ShieldAlert, Users, Map, MessageSquare } from "lucide-react";
 import { useMagnetic } from "../hooks/useMagnetic";

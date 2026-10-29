@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Terminal, Send, Search, CheckCircle, Calendar, Sparkles } from "lucide-react";
 
@@ -28,7 +28,7 @@ const AutomationDemo = () => {
   }, [count]);
 
   return (
-    <section className="py-24 bg-[#fafafa] relative">
+    <section id="demo" className="py-24 bg-[#fafafa] relative">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -42,7 +42,7 @@ const AutomationDemo = () => {
                   <CheckCircle />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#050505] mb-1">Zero Input Required</h4>
+                  <h3 className="font-bold text-[#050505] mb-1">Zero Input Required</h3>
                   <p className="text-sm text-[#050505]/50">Once configured, the system handles the entire lifecycle of a customer autonomously.</p>
                 </div>
               </div>
@@ -51,7 +51,7 @@ const AutomationDemo = () => {
                   <Terminal />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#050505] mb-1">Intelligent Reasoning</h4>
+                  <h3 className="font-bold text-[#050505] mb-1">Intelligent Reasoning</h3>
                   <p className="text-sm text-[#050505]/50">Our agents use advanced LLMs to make decisions based on your business logic.</p>
                 </div>
               </div>

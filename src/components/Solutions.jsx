@@ -1,6 +1,6 @@
-import React from "react";
+
 import { motion } from "framer-motion";
-import { Building2, ShoppingCart, HeartPulse, Laptop, Store, UserSearch } from "lucide-react";
+import { Building2, ShoppingCart, HeartPulse, Laptop, UserSearch } from "lucide-react";
 
 const industries = [
   {

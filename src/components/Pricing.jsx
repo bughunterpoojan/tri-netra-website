@@ -1,4 +1,4 @@
-import React from "react";
+
 import { motion } from "framer-motion";
 import { Search, SlidersHorizontal, Send, ArrowRight, ShieldCheck, Clock, Target, BadgeCheck } from "lucide-react";
 import { CONFIG } from "../config";
@@ -80,9 +80,9 @@ const Pricing = () => {
               </span>
 
               {/* Heading — same as "Zero Input Required" */}
-              <h4 className="font-bold text-[#050505] mb-3">
+              <h3 className="font-bold text-[#050505] mb-3">
                 {card.heading}
-              </h4>
+              </h3>
 
               {/* Body — same as feature card description */}
               <p className="text-sm text-[#050505]/50 leading-relaxed">

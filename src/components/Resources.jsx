@@ -1,9 +1,9 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { 
-  FileText, Download, ExternalLink, Bot, CheckSquare, 
-  Workflow, ArrowRight, ShieldCheck, Sparkles, BookOpen 
+  Download, ExternalLink, Bot, CheckSquare, 
+  Workflow, BookOpen 
 } from "lucide-react";
+import { CONFIG } from "../config";
 
 const downloadableResources = [
   {
@@ -149,14 +149,14 @@ const Resources = () => {
                 </div>
 
                 <div className="pt-4 border-t border-black/5 flex items-center justify-between">
-                  <a
-                    href="#why-automate"
-                    className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
-                    title={`View details for ${resource.title}`}
+                  <button
+                    onClick={() => window.Cal && window.Cal("modal", { calLink: CONFIG.calLink })}
+                    className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline text-left cursor-pointer"
+                    title={`Request copy of ${resource.title}`}
                   >
                     <Download className="w-4 h-4" />
                     <span>{resource.actionText}</span>
-                  </a>
+                  </button>
                 </div>
               </motion.article>
             ))}

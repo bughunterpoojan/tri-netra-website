@@ -1,99 +1,136 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { 
-  Search, Bot, Zap, Database, Mail, Phone, CalendarCheck, 
-  Workflow, ArrowRight, Sparkles, CheckCircle2, ShieldCheck, 
-  Globe, MessageSquare, Flame
+  Search, Bot, Database, Phone,
+  Workflow, ArrowRight, Sparkles,
+  Code2, Smartphone, Layout, Users, Briefcase, MessageSquare
 } from "lucide-react";
-import { CONFIG } from "../config";
 
 const keywordCategories = [
   { id: "all", label: "All Capabilities" },
-  { id: "whatsapp", label: "WhatsApp & Voice AI" },
-  { id: "leads", label: "Lead Gen & Sales" },
-  { id: "crm", label: "CRM & Workflows" },
-  { id: "enterprise", label: "Custom AI Employees" }
+  { id: "software", label: "Web & Mobile Development" },
+  { id: "ai", label: "AI & Conversational Agents" },
+  { id: "automation", label: "Workflows & CRM Sync" },
+  { id: "teams", label: "Dedicated Teams & Consulting" }
 ];
 
 const capabilityKeywords = [
+  // Web & Mobile Development
   {
-    category: "whatsapp",
-    keyword: "WhatsApp AI Agent",
-    tagline: "Autonomous 24/7 Lead Response on WhatsApp",
-    desc: "Connects official WhatsApp Business API to LLMs to answer questions, handle objections, and qualify buyer intent in real-time.",
-    deliverable: "Instant replies, CRM contact creation, automatic appointment booking.",
-    metrics: "< 30 sec response • 24/7 coverage",
+    category: "software",
+    slug: "web-development",
+    keyword: "Custom Web Application Development",
+    tagline: "High-Performance Full-Stack SaaS & Web Portals",
+    desc: "Engineered in Next.js, React, Node.js, and PostgreSQL for enterprise responsiveness, airtight security, and cloud scalability.",
+    deliverable: "Responsive web platform, robust API backend, automated CI/CD pipeline.",
+    metrics: "< 1.1s load time • 99.9% uptime",
+    icon: <Code2 className="w-5 h-5 text-blue-500" />,
+    badgeColor: "bg-blue-500/10 text-blue-600 border-blue-500/20"
+  },
+  {
+    category: "software",
+    slug: "mobile-app-development",
+    keyword: "Mobile App Development (iOS & Android)",
+    tagline: "Cross-Platform Flutter & React Native Apps",
+    desc: "Native-grade performance, offline-first data sync, biometrics, push notifications, and App Store / Google Play publishing.",
+    deliverable: "Unified iOS & Android builds, App Store submissions, backend API integration.",
+    metrics: "2.5x faster time-to-market",
+    icon: <Smartphone className="w-5 h-5 text-indigo-500" />,
+    badgeColor: "bg-indigo-500/10 text-indigo-600 border-indigo-500/20"
+  },
+  {
+    category: "software",
+    slug: "ui-ux-design",
+    keyword: "UI/UX Design & Design Systems",
+    tagline: "Research-Backed Interfaces & Interactive Figma Prototypes",
+    desc: "Clean, intuitive user experience design, comprehensive component token libraries, and usability testing to maximize conversion rates.",
+    deliverable: "Clickable Figma prototypes, design token libraries, developer handoff specs.",
+    metrics: "+45% conversion uplift",
+    icon: <Layout className="w-5 h-5 text-pink-500" />,
+    badgeColor: "bg-pink-500/10 text-pink-600 border-pink-500/20"
+  },
+
+  // AI & Conversational Agents
+  {
+    category: "ai",
+    slug: "whatsapp-automation",
+    keyword: "WhatsApp AI Sales & Support Agent",
+    tagline: "Autonomous 24/7 Lead Response on Official WhatsApp API",
+    desc: "Connects official WhatsApp Business API to LLMs to answer inquiries, overcome objections, and qualify buyer intent in real-time.",
+    deliverable: "Instant replies, automated CRM contact creation, real-time appointment booking.",
+    metrics: "< 15 sec response • 24/7 coverage",
     icon: <MessageSquare className="w-5 h-5 text-emerald-500" />,
     badgeColor: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"
   },
   {
-    category: "whatsapp",
-    keyword: "Voice AI Calling Agent",
-    tagline: "Human-Quality Voice Screening & Reminders",
-    desc: "Voice agents powered by Vapi & LLMs that make and receive calls, qualify leads conversationally, and minimize appointment no-shows.",
-    deliverable: "Inbound call triage, outbound booking confirmations, call recordings logged in CRM.",
+    category: "ai",
+    slug: "ai-voice-agents",
+    keyword: "Voice AI Calling & Screening Agent",
+    tagline: "Human-Quality Voice Conversations & Booking Reminders",
+    desc: "Voice agents powered by Vapi & LLMs that handle inbound calls, screen prospects conversationally, and eliminate appointment no-shows.",
+    deliverable: "Inbound call routing, automated reminder phone calls, CRM transcript logs.",
     metrics: "Up to 30% fewer no-shows",
     icon: <Phone className="w-5 h-5 text-purple-500" />,
     badgeColor: "bg-purple-500/10 text-purple-600 border-purple-500/20"
   },
   {
-    category: "leads",
-    keyword: "AI Lead Generation & Enrichment",
-    tagline: "ICP Prospect Discovery & Automated Scoring",
-    desc: "Autonomous scraping and data verification from Apollo, LinkedIn, and web sources tailored specifically to your ideal customer profile.",
-    deliverable: "Verified corporate emails, phone numbers, ICP score, auto-pushed to CRM.",
-    metrics: "21x higher lead conversion",
-    icon: <Zap className="w-5 h-5 text-blue-500" />,
-    badgeColor: "bg-blue-500/10 text-blue-600 border-blue-500/20"
-  },
-  {
-    category: "leads",
-    keyword: "Cold Email Outreach Infrastructure",
-    tagline: "High-Deliverability Inboxes & Personalized Sequences",
-    desc: "Multi-domain warmup, SPF/DKIM/DMARC configuration, inbox rotation, and hyper-personalized AI email sequences at scale.",
-    deliverable: "Warmup automation, automated 3-stage follow-ups, primary tab deliverability.",
-    metrics: "Up to 18% reply rate",
-    icon: <Mail className="w-5 h-5 text-indigo-500" />,
-    badgeColor: "bg-indigo-500/10 text-indigo-600 border-indigo-500/20"
-  },
-  {
-    category: "crm",
-    keyword: "CRM Automation & n8n Workflows",
-    tagline: "Real-time Two-Way Sync across HubSpot & Sheets",
-    desc: "End-to-end data pipeline syncing inbound leads, sales pipeline stages, notes, and task assignments with zero manual data entry.",
-    deliverable: "Custom n8n and Zapier webhooks, deduplication, contact enrichment.",
-    metrics: "Saves 4-6 hours/rep weekly",
-    icon: <Database className="w-5 h-5 text-cyan-500" />,
+    category: "ai",
+    slug: "custom-ai-solutions",
+    keyword: "Custom AI Employees & Private RAG",
+    tagline: "Internal AI Assistants Trained on Company SOPs",
+    desc: "Private AI agents equipped with vector search to retrieve facts from internal documentation, wikis, and databases without data leakage.",
+    deliverable: "Slack/Teams bot, private vector database, role-based document access.",
+    metrics: "100% private data isolation",
+    icon: <Bot className="w-5 h-5 text-cyan-500" />,
     badgeColor: "bg-cyan-500/10 text-cyan-600 border-cyan-500/20"
   },
+
+  // Workflows & CRM Sync
   {
-    category: "crm",
-    keyword: "AI Appointment Booking & Calendar Sync",
-    tagline: "Frictionless Scheduling on Cal.com & Google Calendar",
-    desc: "Conversational scheduling via chat and voice that verifies availability, books time slots, and sends instant calendar invites with reminders.",
-    deliverable: "Time zone auto-detection, rescheduling links, CRM deal updates.",
-    metrics: "89% booked without human input",
-    icon: <CalendarCheck className="w-5 h-5 text-rose-500" />,
-    badgeColor: "bg-rose-500/10 text-rose-600 border-rose-500/20"
-  },
-  {
-    category: "enterprise",
-    keyword: "Autonomous AI Employees",
-    tagline: "Custom Multi-Agent Workflows Tailored to Your Stack",
-    desc: "Bespoke AI agents equipped with custom memory, tool integrations, and decision trees to perform complex multi-step operations autonomously.",
-    deliverable: "End-to-end mapped workflows, error fallbacks, executive monitoring dashboard.",
-    metrics: "100% custom-tailored",
+    category: "automation",
+    slug: "ai-automation",
+    keyword: "Enterprise Workflow Automation (n8n & RPA)",
+    tagline: "Zero-Touch Business Operations & Pipeline Connectors",
+    desc: "Eliminate manual data transfers, automated PDF/invoice parsing, and cross-platform notifications using self-hosted n8n and Python.",
+    deliverable: "Multi-system workflows, automated invoice OCR, Slack/Telegram alerts.",
+    metrics: "Saves 25+ hours weekly",
     icon: <Workflow className="w-5 h-5 text-amber-500" />,
     badgeColor: "bg-amber-500/10 text-amber-600 border-amber-500/20"
   },
   {
-    category: "enterprise",
-    keyword: "AI Automation Agency India",
-    tagline: "World-Class Automation Engineering from Ahmedabad",
-    desc: "TriNetra Technologies provides enterprise-grade AI automation consulting, system architecture, and maintenance for clients in India and worldwide.",
-    deliverable: "Complete implementation, ongoing monitoring, security-compliant API integrations.",
-    metrics: "Global & Domestic Delivery",
-    icon: <Globe className="w-5 h-5 text-teal-500" />,
+    category: "automation",
+    slug: "crm-erp-automation",
+    keyword: "CRM & ERP Two-Way Automation",
+    tagline: "Real-Time Sync Across HubSpot, Salesforce & Sheets",
+    desc: "Continuous data synchronization connecting leads, deals, meeting transcripts, and contact enrichment without manual keyboard entry.",
+    deliverable: "Custom webhooks, data deduplication, auto-lead scoring and assignment.",
+    metrics: "Saves 4-6 hours per rep",
+    icon: <Database className="w-5 h-5 text-blue-500" />,
+    badgeColor: "bg-blue-500/10 text-blue-600 border-blue-500/20"
+  },
+
+  // Dedicated Teams & Consulting
+  {
+    category: "teams",
+    slug: "dedicated-engineering-teams",
+    keyword: "Dedicated Engineering Teams (Staff Augmentation)",
+    tagline: "Vetted Senior Full-Stack Developers In Your Time Zone",
+    desc: "Scale your product engineering speed with dedicated React, Next.js, Python, and mobile developers integrated directly into your sprints.",
+    deliverable: "Dedicated full-time developers, daily standups, direct GitHub commits.",
+    metrics: "< 7 days onboarding speed",
+    icon: <Users className="w-5 h-5 text-rose-500" />,
+    badgeColor: "bg-rose-500/10 text-rose-600 border-rose-500/20"
+  },
+  {
+    category: "teams",
+    slug: "it-consulting",
+    keyword: "Strategic IT Consulting & Virtual CTO",
+    tagline: "Architecture Audits, Cloud Cost Optimization & Advisory",
+    desc: "Senior engineering advisory for founders and enterprises: tech stack evaluation, cloud bill reductions, and digital scalability roadmap.",
+    deliverable: "Comprehensive architecture review, cloud bill optimization, quarterly roadmap.",
+    metrics: "Up to 40% cloud cost savings",
+    icon: <Briefcase className="w-5 h-5 text-teal-500" />,
     badgeColor: "bg-teal-500/10 text-teal-600 border-teal-500/20"
   }
 ];
@@ -125,7 +162,7 @@ const SearchKeywords = () => {
           >
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-xs font-bold uppercase tracking-widest text-primary">
-              Search & Discover Capabilities
+              Full IT & Automation Capabilities
             </span>
           </motion.div>
 
@@ -135,7 +172,7 @@ const SearchKeywords = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-black text-[#050505] tracking-tight mb-4"
           >
-            What We Automate: <span className="text-primary italic">Keywords & Solutions</span>
+            Capabilities Index: <span className="text-primary italic">Software, AI & Teams</span>
           </motion.h2>
 
           <motion.p
@@ -143,9 +180,9 @@ const SearchKeywords = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[#050505]/60 text-lg leading-relaxed"
+            className="text-[#050505]/60 text-lg leading-relaxed font-medium"
           >
-            Looking for specific automation solutions? Explore the core systems built by <strong className="text-[#050505]">TriNetra Technologies</strong> to eliminate bottlenecks and scale operations.
+            Looking for specific technical services? Search through the complete capabilities delivered by <strong className="text-[#050505]">TriNetra Technologies</strong> to accelerate your digital growth.
           </motion.p>
         </div>
 
@@ -158,8 +195,8 @@ const SearchKeywords = () => {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   activeCategory === cat.id
-                    ? "bg-primary text-white shadow-md shadow-primary/25"
-                    : "bg-black/[0.04] text-[#050505]/70 hover:bg-black/[0.08]"
+                    ? "bg-primary text-white shadow-md shadow-primary/20"
+                    : "bg-black/[0.03] text-[#050505]/70 hover:bg-black/[0.06] hover:text-[#050505]"
                 }`}
               >
                 {cat.label}
@@ -167,20 +204,20 @@ const SearchKeywords = () => {
             ))}
           </div>
 
-          <div className="relative w-full md:w-64">
-            <Search className="w-4 h-4 text-[#050505]/40 absolute left-3 top-1/2 -translate-y-1/2" />
+          <div className="relative w-full md:w-72">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#050505]/40" />
             <input
               type="text"
-              placeholder="Search keyword (e.g. WhatsApp)..."
+              placeholder="Search services or tech..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 text-xs rounded-xl border border-black/10 bg-black/[0.02] focus:bg-white focus:border-primary/50 outline-none transition-all"
+              className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-black/[0.03] border border-black/5 focus:outline-hidden focus:border-primary/40 focus:bg-white transition-all text-[#050505]"
             />
           </div>
         </div>
 
-        {/* Capability Keyword Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-16">
+        {/* Capabilities Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-16">
           {filteredKeywords.map((item, idx) => (
             <motion.div
               key={idx}
@@ -188,20 +225,19 @@ const SearchKeywords = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05 }}
-              whileHover={{ y: -4 }}
-              className="p-6 rounded-3xl bg-white border border-black/5 hover:border-primary/30 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+              className="group p-6 rounded-3xl bg-white border border-black/5 hover:border-black/15 hover:shadow-xl hover:shadow-black/5 transition-all flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="p-2.5 rounded-2xl bg-black/[0.03] border border-black/5">
+                  <div className="w-10 h-10 rounded-xl bg-black/[0.03] flex items-center justify-center">
                     {item.icon}
                   </div>
-                  <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${item.badgeColor}`}>
+                  <span className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border ${item.badgeColor}`}>
                     {item.metrics}
                   </span>
                 </div>
 
-                <h3 className="text-lg font-black text-[#050505] mb-1 group-hover:text-primary transition-colors">
+                <h3 className="text-base font-black text-[#050505] mb-1 group-hover:text-primary transition-colors">
                   {item.keyword}
                 </h3>
                 <p className="text-xs font-bold text-primary/80 mb-3">
@@ -222,49 +258,18 @@ const SearchKeywords = () => {
                 </div>
               </div>
 
-              <button
-                onClick={() => window.Cal && window.Cal("modal", { calLink: CONFIG.calLink })}
-                className="w-full pt-3 border-t border-black/5 flex items-center justify-between text-xs font-bold text-primary group-hover:text-primary/80"
-              >
-                <span>Automate This</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </button>
+              <div className="pt-3 border-t border-black/5 flex flex-col gap-2">
+                <Link
+                  to={`/services/${item.slug}`}
+                  className="text-xs font-bold text-primary hover:underline flex items-center justify-between"
+                >
+                  <span>Explore {item.keyword}</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Global SEO Keyword Search Summary Footer */}
-        <div className="max-w-5xl mx-auto p-6 md:p-8 rounded-3xl bg-gradient-to-r from-primary/[0.03] via-black/[0.02] to-primary/[0.03] border border-black/5 text-center">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <Flame className="w-4 h-4 text-primary" />
-            <span className="text-xs font-black uppercase tracking-widest text-[#050505]">
-              Popular Search Terms Indexed for TriNetra Technologies
-            </span>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {[
-              "TriNetra Technologies",
-              "AI Automation Agency India",
-              "WhatsApp AI Agent",
-              "Custom AI Workflows",
-              "CRM Automation Agency",
-              "AI Appointment Booking Agent",
-              "Cold Email Infrastructure Setup",
-              "n8n Workflow Automation",
-              "Autonomous AI Employees",
-              "Lead Qualification Chatbot",
-              "AI Company Ahmedabad"
-            ].map((kw, i) => (
-              <span
-                key={i}
-                className="text-[11px] font-semibold px-3 py-1 rounded-lg bg-white border border-black/5 text-[#050505]/70 shadow-2xs"
-              >
-                {kw}
-              </span>
-            ))}
-          </div>
-        </div>
-
       </div>
     </section>
   );

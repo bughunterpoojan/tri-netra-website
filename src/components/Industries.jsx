@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { 
   Building2, Monitor, Stethoscope, ShoppingCart, Users2, 
-  ArrowUpRight, Sparkles, Megaphone, HeartPulse, UserSearch, Briefcase
+  ArrowUpRight, Sparkles, Megaphone, UserSearch, Briefcase
 } from "lucide-react";
 
 const industries = [
@@ -90,7 +90,9 @@ const industries = [
 
 const Industries = () => {
   return (
-    <section id="industries" className="py-24 bg-white overflow-hidden">
+    <section id="solutions" className="py-24 bg-white overflow-hidden relative">
+      {/* Anchor alias so both #solutions and #industries work */}
+      <div id="industries" className="absolute top-0 left-0 -mt-20" />
       <div className="container mx-auto px-6">
         <div className="mb-16">
           <motion.div
@@ -150,9 +152,9 @@ const IndustryCard = ({ item, index }) => (
 
     {/* Content Group */}
     <div className="relative z-10 mt-auto">
-      <div className="text-xs font-bold text-zinc-400 uppercase tracking-[0.2em] mb-3">
+      <h3 className="text-xs font-bold text-zinc-400 uppercase tracking-[0.2em] mb-3">
         {item.title}
-      </div>
+      </h3>
       <div className={`text-5xl font-black ${item.accent} tracking-tighter mb-2`}>
         {item.stat}
       </div>

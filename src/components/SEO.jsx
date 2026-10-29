@@ -1,0 +1,109 @@
+import { useEffect } from "react";
+
+const DEFAULT_TITLE = "AI Automation & AI Agent Solutions | TriNetra Technologies";
+const DEFAULT_DESCRIPTION = "Discover AI agents, voice automation, WhatsApp automation, and custom AI solutions for businesses with TriNetra Technologies.";
+const DEFAULT_CANONICAL = "https://www.trinetra-technologies.in/";
+const DEFAULT_IMAGE = "https://www.trinetra-technologies.in/logo.png";
+
+export const SEO = ({
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  canonical = DEFAULT_CANONICAL,
+  ogType = "website",
+  ogImage = DEFAULT_IMAGE,
+  twitterCard = "summary_large_image",
+  keywords,
+  schema
+}) => {
+  useEffect(() => {
+    // 1. Update Document Title
+    document.title = title;
+
+    // Helper to safely update or insert a meta tag
+    const updateMetaTag = (selector, attributeName, attributeValue, content) => {
+      let element = document.querySelector(selector);
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attributeName, attributeValue);
+        document.head.appendChild(element);
+      }
+      if (content !== undefined && content !== null) {
+        element.setAttribute("content", content);
+      }
+    };
+
+    // 2. Primary Meta Tags
+    updateMetaTag('meta[name="description"]', "name", "description", description);
+    if (keywords) {
+      updateMetaTag('meta[name="keywords"]', "name", "keywords", keywords);
+    }
+
+    // 3. Canonical Tag
+    if (canonical) {
+      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (!canonicalLink) {
+        canonicalLink = document.createElement("link");
+        canonicalLink.setAttribute("rel", "canonical");
+        document.head.appendChild(canonicalLink);
+      }
+      canonicalLink.setAttribute("href", canonical);
+    }
+
+    // 4. Open Graph Social Tags
+    updateMetaTag('meta[property="og:title"]', "property", "og:title", title);
+    updateMetaTag('meta[property="og:description"]', "property", "og:description", description);
+    updateMetaTag('meta[property="og:url"]', "property", "og:url", canonical || DEFAULT_CANONICAL);
+    updateMetaTag('meta[property="og:type"]', "property", "og:type", ogType);
+    updateMetaTag('meta[property="og:image"]', "property", "og:image", ogImage);
+    updateMetaTag('meta[property="og:site_name"]', "property", "og:site_name", "TriNetra Technologies");
+
+    // 5. Twitter Card Tags
+    updateMetaTag('meta[name="twitter:card"]', "name", "twitter:card", twitterCard);
+    updateMetaTag('meta[name="twitter:title"]', "name", "twitter:title", title);
+    updateMetaTag('meta[name="twitter:description"]', "name", "twitter:description", description);
+    updateMetaTag('meta[name="twitter:image"]', "name", "twitter:image", ogImage);
+
+    // 6. JSON-LD Dynamic Schema
+    let schemaScript = document.getElementById("dynamic-page-schema");
+    if (schema) {
+      if (!schemaScript) {
+        schemaScript = document.createElement("script");
+        schemaScript.id = "dynamic-page-schema";
+        schemaScript.type = "application/ld+json";
+        document.head.appendChild(schemaScript);
+      }
+      schemaScript.textContent = JSON.stringify(schema);
+    } else if (schemaScript) {
+      schemaScript.remove();
+    }
+
+    // Cleanup when component unmounts (reset dynamic schema)
+    return () => {
+      const script = document.getElementById("dynamic-page-schema");
+      if (script) {
+        script.remove();
+      }
+    };
+  }, [title, description, canonical, ogType, ogImage, twitterCard, keywords, schema]);
+
+  return (
+    <>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      {canonical && <link rel="canonical" href={canonical} />}
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      {canonical && <meta property="og:url" content={canonical} />}
+      <meta property="og:type" content={ogType} />
+      <meta property="og:image" content={ogImage} />
+      <meta name="twitter:card" content={twitterCard} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={ogImage} />
+      {keywords && <meta name="keywords" content={keywords} />}
+    </>
+  );
+};
+
+export default SEO;
+

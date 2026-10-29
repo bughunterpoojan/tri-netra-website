@@ -1,4 +1,4 @@
-import React from "react";
+
 import { motion } from "framer-motion";
 import { Users, Zap, EyeOff, Workflow, Scale, BarChart3, ArrowRight } from "lucide-react";
 

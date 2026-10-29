@@ -1,269 +1,155 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Users, CalendarCheck, BarChart3, Bot, Mail, Cpu, X, ArrowRight, 
-  CheckCircle2, Search, Send, Zap, MousePointer2, Target, Smartphone,
-  MessageSquare, Bell, ShieldCheck, FileText, Database, RefreshCw, Wand2, GitMerge,
-  Map, AlertTriangle, Briefcase, Settings2
+  X, ArrowRight, Check, ChevronRight, Sparkles
 } from "lucide-react";
 import { CONFIG } from "../config";
-
-const services = [
-  {
-    title: "AI Lead Generation",
-    description: "Automated discovery, enrichment, and outreach — tailored to your ICP",
-    icon: <Users className="w-8 h-8" />,
-    color: "from-blue-500 to-cyan-500",
-    details: {
-      stats: [
-        { label: "Conversion lift, <5 min response", value: "21x" },
-        { label: "Avg. B2B response time today", value: "42 hrs" },
-        { label: "Leads never contacted at all", value: "73%" }
-      ],
-      whatWeAutomate: [
-        {
-          title: "Sourcing & enrichment",
-          desc: "Scrape and verify prospects matching your exact ICP, pulled across data sources daily.",
-          icon: <Target className="w-5 h-5" />
-        },
-        {
-          title: "Outreach at scale",
-          desc: "Personalized multi-step email sequences sent across rotated inboxes for deliverability.",
-          icon: <Send className="w-5 h-5" />
-        },
-        {
-          title: "Instant qualification",
-          desc: "Replies and inbound leads scored and routed in minutes, not days.",
-          icon: <Zap className="w-5 h-5" />
-        }
-      ],
-      techStack: ["Apollo.io", "Instantly", "Apify", "n8n", "Clay"],
-      problem: "Leads contacted within 5 minutes convert 21x more than 30+ minutes.",
-      solution: "Automated discovery, enrichment, and outreach — tailored to your ICP",
-      features: ["Verified Email Discovery", "LinkedIn Profile Analysis", "ICP Scoring Matrix", "Real-time CRM Sync"]
-    }
-  },
-  {
-    title: "AI Appointment Setting",
-    description: "Qualifying, scheduling, and confirming — without a human touching a calendar",
-    icon: <CalendarCheck className="w-8 h-8" />,
-    color: "from-purple-500 to-pink-500",
-    details: {
-      stats: [
-        { label: "Conversion lift, instant booking", value: "30% → 67%" },
-        { label: "No-show reduction with AI reminders", value: "up to 30%" },
-        { label: "Bookings resolved with zero human input", value: "89%" }
-      ],
-      whatWeAutomate: [
-        {
-          title: "Conversational qualification",
-          desc: "Voice or chat agent asks the right questions before a slot is ever offered.",
-          icon: <MessageSquare className="w-5 h-5" />
-        },
-        {
-          title: "Live calendar booking",
-          desc: "Syncs directly to your real-time availability — no double-booking.",
-          icon: <CalendarCheck className="w-5 h-5" />
-        },
-        {
-          title: "Confirmations & reminders",
-          desc: "Automated SMS/email touches before the appointment, with one-tap reschedule.",
-          icon: <Bell className="w-5 h-5" />
-        }
-      ],
-      techStack: ["Vapi", "n8n", "Google Calendar", "WhatsApp Business API", "Twilio"],
-      problem: "Every missed appointment is money walking out the door. A calendar that books and confirms itself doesn't get tired.",
-      solution: "Qualifying, scheduling, and confirming — without a human touching a calendar",
-      features: ["Multi-channel Presence", "2-Way Calendar Sync", "Natural Language Conversational", "Lead Qualification Scoring"]
-    }
-  },
-  {
-    title: "WhatsApp & Sales AI Agents",
-    description: "Autonomous WhatsApp agents that qualify leads, handle objections, and close — 24/7 over chat or voice",
-    icon: <Bot className="w-8 h-8" />,
-    color: "from-orange-500 to-red-500",
-    details: {
-      stats: [
-        { label: "More qualified leads with AI agents", value: "+50%" },
-        { label: "Shorter sales cycle", value: "-30%" },
-        { label: "Sales teams adding conversational AI", value: "63%" }
-      ],
-      whatWeAutomate: [
-        {
-          title: "Real-time objection handling",
-          desc: "Agent reads context and pushes back on price, timing, and trust objections instantly.",
-          icon: <ShieldCheck className="w-5 h-5" />
-        },
-        {
-          title: "Chat or voice, same agent",
-          desc: "One agent handles website chat, WhatsApp, and live calls without losing context.",
-          icon: <Smartphone className="w-5 h-5" />
-        },
-        {
-          title: "Closes or hands off cleanly",
-          desc: "Simple deals close end-to-end; complex ones get routed to a human with full context.",
-          icon: <FileText className="w-5 h-5" />
-        }
-      ],
-      techStack: ["Vapi", "OpenAI / Claude API", "n8n", "WhatsApp Business API", "CRM (HubSpot / Pipedrive)"],
-      problem: "Your best closer can't work every chat at once. This one can. An agent that never gets tired of the same objection.",
-      solution: "Autonomous agents that qualify, handle objections, and close — over chat or voice",
-      features: ["Voice & Chat Capabilities", "Custom Brand Voice", "Objection Handling Matrix", "CRM Transaction Logging"]
-    }
-  },
-  {
-    title: "CRM Automation",
-    description: "Clean, synced data across every platform — without anyone touching a keyboard",
-    icon: <BarChart3 className="w-8 h-8" />,
-    color: "from-green-500 to-emerald-500",
-    details: {
-      stats: [
-        { label: "Hours saved per rep, weekly", value: "4-6 hrs" },
-        { label: "Reps' time lost to admin work", value: "~70%" },
-        { label: "Reps spending 1+ hr/day on manual entry", value: "32%" }
-      ],
-      whatWeAutomate: [
-        {
-          title: "Real-time sync",
-          desc: "Every new lead or status change updates instantly across CRM, sheets, and messaging tools.",
-          icon: <RefreshCw className="w-5 h-5" />
-        },
-        {
-          title: "Auto-enrichment",
-          desc: "Incoming contacts get verified, enriched, and tagged the moment they're captured.",
-          icon: <Wand2 className="w-5 h-5" />
-        },
-        {
-          title: "Pipeline automation",
-          desc: "Deals move stages and tasks get assigned automatically based on activity.",
-          icon: <GitMerge className="w-5 h-5" />
-        }
-      ],
-      techStack: ["n8n", "HubSpot", "Pipedrive", "Google Sheets", "Apollo.io"],
-      problem: "Dirty CRM data isn't a minor annoyance. It's a forecast you can't trust. Every duplicate is a decision made on bad information.",
-      solution: "Clean, synced data across every platform — without anyone touching a keyboard",
-      features: ["Automated Data Enrichment", "Cross-platform Sync (Zapier/Make)", "Meeting Summary Extraction", "AI Task Assignment"]
-    }
-  },
-  {
-    title: "Email Outreach Systems",
-    description: "High-deliverability cold email, built to feel personal at scale",
-    icon: <Mail className="w-8 h-8" />,
-    color: "from-indigo-500 to-blue-500",
-    details: {
-      stats: [
-        { label: "Reply rate, generic blast vs personalized", value: "2-3% → 18%" },
-        { label: "Replies that come from a follow-up, not email 1", value: "42%" },
-        { label: "Reps who never send a second message", value: "48%" }
-      ],
-      whatWeAutomate: [
-        {
-          title: "Deliverability infrastructure",
-          desc: "Domain warmup, SPF/DKIM/DMARC setup, and inbox rotation so your emails land in primary.",
-          icon: <ShieldCheck className="w-5 h-5" />
-        },
-        {
-          title: "AI-personalized sequences",
-          desc: "Every email written around the prospect's actual context, not just a merge-tagged name.",
-          icon: <Wand2 className="w-5 h-5" />
-        },
-        {
-          title: "Automated follow-up cadence",
-          desc: "2-3 well-timed follow-ups sent automatically, so no reply gets left on the table.",
-          icon: <RefreshCw className="w-5 h-5" />
-        }
-      ],
-      techStack: ["Instantly", "Apollo.io", "Apify", "n8n", "OpenAI / Claude API"],
-      problem: "Most cold email doesn't fail on copy. It fails before it's even opened. Bad infrastructure and no follow-up kill more campaigns than weak writing.",
-      solution: "High-deliverability cold email, built to feel personal at scale",
-      features: ["AI Personalization Lines", "Spin-tax Free Variations", "Deliverability Monitoring", "Multi-inbox Management"]
-    }
-  },
-  {
-    title: "Custom AI Employees",
-    description: "Built around your actual workflow — not the other way around",
-    icon: <Cpu className="w-8 h-8" />,
-    color: "from-cyan-500 to-teal-500",
-    details: {
-      stats: [
-        { label: "Automation initiatives delivering expected ROI", value: "Only 26%" },
-        { label: "Custom systems vs generic templates", value: "100% Unique" },
-        { label: "First version vs Final version tuned", value: "Post-Launch" }
-      ],
-      whatWeAutomate: [
-        {
-          title: "We map the real process",
-          desc: "Not what's on a slide — what actually happens between your team and tools.",
-          icon: <Map className="w-5 h-5" />
-        },
-        {
-          title: "We find where it breaks",
-          desc: "The bottleneck, the manual handoff, the step someone repeats 50x a week.",
-          icon: <AlertTriangle className="w-5 h-5" />
-        },
-        {
-          title: "We build it into your logic",
-          desc: "An agent or workflow shaped to your rules, your edge cases, and your tools.",
-          icon: <Settings2 className="w-5 h-5" />
-        }
-      ],
-      techStack: ["n8n", "OpenAI / Claude API", "Vapi", "Custom APIs", "Your existing stack"],
-      problem: "Only 26% of automation initiatives deliver the ROI companies expected. Off-the-shelf tools get bent to fit processes they weren't built for.",
-      solution: "Built around your actual workflow — not the other way around",
-      features: ["Internal Document Retrieval (RAG)", "Third-party API Integration", "Custom LLM Fine-tuning", "Autonomous Task Execution"]
-    }
-  }
-];
+import { servicesData, serviceCategories, getServiceIcon } from "../data/servicesData";
 
 const Services = () => {
+  const [activeCategory, setActiveCategory] = useState("all");
   const [selectedService, setSelectedService] = useState(null);
 
+  // ── Lock background scroll while modal is open ────────────────────────────
+  // Stops Lenis (smooth scroll) and freezes body so only the modal scrolls.
+  useEffect(() => {
+    const lenis = window.__lenis;
+    if (selectedService) {
+      if (lenis) lenis.stop();
+      document.body.style.overflow = "hidden";
+    } else {
+      if (lenis) lenis.start();
+      document.body.style.overflow = "";
+    }
+    return () => {
+      // Safety cleanup if component unmounts with modal open
+      if (lenis) lenis.start();
+      document.body.style.overflow = "";
+    };
+  }, [selectedService]);
+
+  const filteredServices = servicesData.filter((service) => 
+    activeCategory === "all" ? true : service.category === activeCategory
+  );
+
   return (
-    <section id="services" className="py-24 relative overflow-hidden">
+    <section id="services" className="py-28 relative overflow-hidden bg-[#fafafa]">
+      {/* Background Subtle Ambience */}
+      <div className="absolute top-1/3 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[160px] pointer-events-none" />
+
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20">
+        
+        {/* Section Header */}
+        <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-4"
           >
+            <Sparkles className="w-3.5 h-3.5 text-primary" />
             <span className="text-xs font-bold uppercase tracking-widest text-primary">
-              AI Automation Services
+              Full-Suite IT Services & AI Solutions
             </span>
           </motion.div>
+          
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-[#050505]"
+            className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-[#050505]"
           >
-            Capabilities That <span className="text-primary italic">Scale Your Business</span>.
+            Enterprise Capabilities That <br className="hidden sm:inline" />
+            <span className="text-primary italic">Scale Your Entire Tech Stack</span>.
           </motion.h2>
+          
           <motion.p 
-             initial={{ opacity: 0, y: 20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true }}
-             transition={{ delay: 0.1 }}
-            className="text-[#050505]/60 text-lg max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-[#050505]/60 text-lg max-w-3xl mx-auto leading-relaxed font-medium"
           >
-            Replace repetitive manual admin with high-performance <strong className="text-[#050505]">WhatsApp AI agents</strong>, custom <strong className="text-[#050505]">n8n & CRM workflows</strong>, automated <strong className="text-[#050505]">lead generation</strong>, and autonomous AI employees engineered to grow with you.
+            From <strong className="text-[#050505]">full-stack web & mobile apps</strong> to autonomous <strong className="text-[#050505]">WhatsApp AI agents</strong>, custom <strong className="text-[#050505]">workflow automation</strong>, and <strong className="text-[#050505]">dedicated engineering teams</strong> — TriNetra Technologies turns technology into your highest-yielding asset.
           </motion.p>
+
+          {/* Interactive Category Filter Pills */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="flex flex-wrap items-center justify-center gap-2 md:gap-3 mt-10 max-w-4xl mx-auto"
+          >
+            {serviceCategories.map((cat) => {
+              const isActive = activeCategory === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`relative px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
+                    isActive 
+                      ? "text-white bg-primary shadow-lg shadow-primary/25 scale-105" 
+                      : "text-[#050505]/70 bg-white border border-black/5 hover:border-black/20 hover:text-[#050505]"
+                  }`}
+                >
+                  <span>{cat.label}</span>
+                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-black ${
+                    isActive ? "bg-white/20 text-white" : "bg-black/5 text-[#050505]/60"
+                  }`}>
+                    {cat.count}
+                  </span>
+                </button>
+              );
+            })}
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {services.map((service, index) => (
-            <ServiceCard 
-              key={index} 
-              service={service} 
-              index={index} 
-              onClick={() => setSelectedService(service)}
-            />
-          ))}
-        </div>
+        {/* Services Grid */}
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredServices.map((service, index) => (
+              <ServiceCard 
+                key={service.id} 
+                service={service} 
+                index={index} 
+                onClick={() => setSelectedService(service)}
+              />
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Bottom Fast CTA Strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 p-8 rounded-3xl glass border border-black/5 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-primary/5 via-white to-primary/5"
+        >
+          <div className="text-center md:text-left">
+            <h3 className="text-xl font-bold text-[#050505] mb-1">
+              Need a Custom Solution or Full-Scale IT Transformation?
+            </h3>
+            <p className="text-sm text-[#050505]/60 font-medium">
+              We engineer custom tech architectures tailored directly to your business bottlenecks.
+            </p>
+          </div>
+          <button
+            onClick={() => window.Cal && window.Cal("modal", { calLink: CONFIG.calLink })}
+            className="px-6 py-3 bg-primary text-white text-sm font-bold rounded-full hover:bg-primary/90 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/25 shrink-0 flex items-center gap-2"
+          >
+            <span>Discuss Your Project</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </motion.div>
       </div>
 
-      {/* Modern Modal / Tab Overlay */}
+      {/* Modern Detailed Modal View */}
       <AnimatePresence>
         {selectedService && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
@@ -276,117 +162,149 @@ const Services = () => {
             />
             
             <motion.div
-              layoutId={`service-${selectedService.title}`}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              layoutId={`service-${selectedService.id}`}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-4xl glass overflow-hidden rounded-[3rem] border border-black/[0.05] shadow-[0_32px_128px_rgba(0,0,0,0.1)] max-h-[90vh] overflow-y-auto"
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              data-lenis-prevent
+              className="relative w-full max-w-4xl glass rounded-[2.5rem] md:rounded-[3rem] border border-black/[0.08] shadow-[0_32px_128px_rgba(0,0,0,0.12)] max-h-[90vh] overflow-y-auto z-10 bg-white/95"
             >
+              {/* Close Button */}
               <button 
                 onClick={() => setSelectedService(null)}
-                className="absolute top-6 right-6 p-3 rounded-full hover:bg-black/5 transition-colors z-50 bg-white/50 backdrop-blur-sm shadow-sm"
+                aria-label="Close details"
+                className="absolute top-6 right-6 p-3 rounded-full hover:bg-black/5 transition-colors z-50 bg-white/80 backdrop-blur-md shadow-sm border border-black/5 text-[#050505]/70 hover:text-[#050505]"
               >
-                <X className="w-6 h-6 text-[#050505]/60" />
+                <X className="w-5 h-5" />
               </button>
 
               <div className="grid grid-cols-1 md:grid-cols-2">
-                {/* Left Side: Dynamic Content */}
-                <div className="p-8 md:p-12 border-r border-black/[0.03]">
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${selectedService.color} flex items-center justify-center text-white mb-6 shadow-lg shadow-black/5`}>
-                    {selectedService.icon}
-                  </div>
-                  <h3 className="text-3xl md:text-4xl font-black text-[#050505] mb-4 leading-tight">
-                    {selectedService.title}
-                  </h3>
-                  <p className="text-base text-[#050505]/60 mb-8 leading-relaxed">
-                    {selectedService.details.solution}
-                  </p>
-                  
-                  {selectedService.details.stats ? (
-                    <div className="grid grid-cols-1 gap-3 mb-6">
+                {/* Left Side: Overview & Core Metrics */}
+                <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-black/[0.05] flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${selectedService.color} flex items-center justify-center text-white shadow-lg shadow-black/10`}>
+                        {getServiceIcon(selectedService.iconName, "w-8 h-8")}
+                      </div>
+                      <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-black/5 text-[#050505]/70">
+                        {selectedService.categoryLabel}
+                      </span>
+                    </div>
+
+                    <h3 className="text-2xl md:text-3xl font-black text-[#050505] mb-3 leading-tight">
+                      {selectedService.title}
+                    </h3>
+                    
+                    <p className="text-sm text-[#050505]/60 mb-6 leading-relaxed font-medium">
+                      {selectedService.details.solution}
+                    </p>
+                    
+                    {/* Key Stats Bar */}
+                    <div className="grid grid-cols-1 gap-2.5 mb-6">
                       {selectedService.details.stats.map((stat, i) => (
-                        <div key={i} className="p-5 rounded-[2rem] bg-black/[0.02] border border-black/5 flex flex-col justify-center">
-                          <div className="text-3xl font-black text-primary mb-1">{stat.value}</div>
-                          <div className="text-[10px] font-bold text-[#050505]/40 leading-tight uppercase tracking-widest">{stat.label}</div>
+                        <div key={i} className="p-4 rounded-2xl bg-black/[0.02] border border-black/5 flex items-center justify-between">
+                          <span className="text-xs font-bold text-[#050505]/60 leading-tight">
+                            {stat.label}
+                          </span>
+                          <span className="text-xl font-black text-primary">
+                            {stat.value}
+                          </span>
                         </div>
                       ))}
                     </div>
-                  ) : (
-                    <div className="flex flex-col gap-4 mb-6">
-                      <span className="text-[10px] font-black uppercase tracking-widest text-primary">Core Tech Stack</span>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedService.details.features.map((feat, i) => (
-                          <div key={i} className="flex items-center gap-2 px-4 py-2 bg-black/[0.02] border border-black/[0.05] rounded-xl text-xs font-bold text-[#050505]/70">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-primary" /> {feat}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
 
-                  {!selectedService.details.stats && (
-                    <div className="mb-0">
-                      <h4 className="text-xs font-black uppercase tracking-widest text-[#050505]/30 mb-3">The Challenge</h4>
-                      <p className="text-sm font-medium text-[#050505]/80 italic">"{selectedService.details.problem}"</p>
+                    {/* The Challenge / Problem Solved */}
+                    <div className="p-4 rounded-2xl bg-primary/[0.03] border border-primary/10 mb-6">
+                      <h4 className="text-[10px] font-black uppercase tracking-widest text-primary mb-1">
+                        The Business Problem We Solve
+                      </h4>
+                      <p className="text-xs font-medium text-[#050505]/70 italic leading-relaxed">
+                        "{selectedService.details.problem}"
+                      </p>
                     </div>
-                  )}
+                  </div>
+
+                  {/* Core Features Tag Cloud */}
+                  <div>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#050505]/40 block mb-2">
+                      Key Capabilities Included
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {selectedService.details.features.map((feat, i) => (
+                        <span key={i} className="flex items-center gap-1.5 px-3 py-1 bg-black/[0.03] border border-black/5 rounded-lg text-[11px] font-bold text-[#050505]/70">
+                          <Check className="w-3 h-3 text-primary" /> {feat}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
-                {/* Right Side: Action Context */}
-                <div className="p-8 md:p-12 bg-black/[0.01] flex flex-col justify-center">
-                  {selectedService.details.whatWeAutomate ? (
-                    <div className="space-y-6 mb-8">
-                      <h4 className="text-xs font-black uppercase tracking-widest text-[#050505]/30">What we automate</h4>
+                {/* Right Side: What We Deliver & Action */}
+                <div className="p-8 md:p-12 bg-black/[0.01] flex flex-col justify-between">
+                  <div>
+                    {/* What We Deliver List */}
+                    <div className="mb-6">
+                      <h4 className="text-xs font-black uppercase tracking-widest text-[#050505]/40 mb-4">
+                        What We Deliver
+                      </h4>
                       <div className="space-y-4">
-                        {selectedService.details.whatWeAutomate.map((item, i) => (
-                          <div key={i} className="flex gap-4">
-                            <div className="w-9 h-9 shrink-0 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-center text-primary">
-                              {item.icon}
+                        {selectedService.details.whatWeDeliver.map((item, i) => (
+                          <div key={i} className="flex gap-3.5">
+                            <div className="w-8 h-8 shrink-0 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mt-0.5">
+                              {getServiceIcon(item.iconName || "Sparkles", "w-4 h-4")}
                             </div>
                             <div>
-                              <h5 className="font-bold text-[#050505] text-sm mb-1">{item.title}</h5>
-                              <p className="text-xs text-[#050505]/50 leading-snug">{item.desc}</p>
+                              <h5 className="font-bold text-[#050505] text-xs mb-0.5">{item.title}</h5>
+                              <p className="text-[11px] text-[#050505]/60 leading-snug">{item.desc}</p>
                             </div>
                           </div>
                         ))}
                       </div>
                     </div>
-                  ) : (
-                    <div className="space-y-4 mb-8">
-                      <h4 className="text-xs font-black uppercase tracking-widest text-[#050505]/30">Deployment</h4>
-                      <ul className="space-y-3">
-                        {["Audit & Data Mapping", "Architecture Design", "Live Testing", "Full Autonomous Scale"].map((step, i) => (
-                          <li key={i} className="flex items-center gap-4 text-xs font-bold text-[#050505]">
-                            <span className="w-6 h-6 rounded-lg bg-white border border-black/[0.05] flex items-center justify-center text-[10px]">{i + 1}</span>
-                            {step}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
 
-                  {selectedService.details.techStack && (
+                    {/* Tech Stack Pills */}
                     <div className="mb-8">
-                      <h4 className="text-xs font-black uppercase tracking-widest text-[#050505]/30 mb-3">Tools in this stack</h4>
-                      <div className="flex flex-wrap gap-2">
+                      <h4 className="text-xs font-black uppercase tracking-widest text-[#050505]/40 mb-2.5">
+                        Tools & Technologies in this Stack
+                      </h4>
+                      <div className="flex flex-wrap gap-1.5">
                         {selectedService.details.techStack.map((tool, i) => (
-                          <div key={i} className="px-3 py-1.5 bg-white border border-black/5 rounded-lg text-[10px] font-bold text-[#050505]/60">
+                          <span key={i} className="px-2.5 py-1 bg-white border border-black/5 rounded-md text-[10px] font-bold text-[#050505]/70 shadow-2xs">
                             {tool}
-                          </div>
+                          </span>
                         ))}
                       </div>
                     </div>
-                  )}
+                  </div>
 
-                  <button 
-                    onClick={() => {
+                  {/* Modal Action CTA */}
+                  <div>
+                    <button 
+                      onClick={() => {
                         setSelectedService(null);
                         window.Cal && window.Cal("modal", { calLink: CONFIG.calLink });
-                    }}
-                    className="w-full py-4 bg-primary text-white rounded-2xl font-black text-base flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-primary/20"
-                  >
-                    Deploy This System <ArrowRight className="w-5 h-5" />
-                  </button>
+                      }}
+                      className="w-full py-3.5 px-6 bg-primary text-white rounded-xl font-black text-sm flex items-center justify-center gap-2 hover:bg-primary/90 hover:scale-[1.01] active:scale-95 transition-all shadow-xl shadow-primary/20"
+                    >
+                      <span>Request Scope & Estimate for This Service</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                    
+                    <div className="mt-3 text-center">
+                      <Link
+                        to={`/services/${selectedService.slug}`}
+                        onClick={() => setSelectedService(null)}
+                        className="text-xs font-bold text-primary hover:underline inline-flex items-center gap-1"
+                      >
+                        <span>Open dedicated page for {selectedService.title}</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+
+                    <p className="text-[10px] text-center text-[#050505]/40 font-bold uppercase tracking-wider mt-2.5">
+                      Direct Strategy Call • 100% Custom Scoped • No Generic Plans
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -399,28 +317,66 @@ const Services = () => {
 
 const ServiceCard = ({ service, index, onClick }) => (
   <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-    whileHover={{ y: -10 }}
+    layout
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, scale: 0.95 }}
+    transition={{ duration: 0.4, delay: index * 0.05 }}
+    whileHover={{ y: -6 }}
     onClick={onClick}
-    className="group relative p-8 rounded-[2rem] glass hover:border-black/10 transition-all cursor-pointer overflow-hidden"
+    className="group relative p-8 rounded-[2rem] glass hover:border-black/15 transition-all cursor-pointer overflow-hidden flex flex-col justify-between border border-black/5 shadow-sm hover:shadow-xl hover:shadow-black/5 bg-white/70"
   >
-    {/* Gradient Glow */}
-    <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 blur-3xl transition-opacity duration-500`} />
+    {/* Subtle Glow on hover */}
+    <div className={`absolute top-0 right-0 w-36 h-36 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-500`} />
     
-    <div className="w-16 h-16 rounded-2xl bg-black/5 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-black/10 transition-transform duration-500">
-      <div className="text-primary">{service.icon}</div>
+    <div>
+      {/* Card Header: Category Badge & Pill */}
+      <div className="flex items-center justify-between mb-6">
+        <div className={`w-14 h-14 rounded-2xl bg-black/5 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-300`}>
+          {getServiceIcon(service.iconName, "w-8 h-8")}
+        </div>
+        <span className="text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-black/[0.04] text-[#050505]/60 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+          {service.badge}
+        </span>
+      </div>
+
+      {/* Title */}
+      <h3 className="text-xl font-bold mb-3 text-[#050505] group-hover:text-primary transition-colors leading-snug">
+        {service.title}
+      </h3>
+      
+      {/* Description */}
+      <p className="text-xs text-[#050505]/60 leading-relaxed mb-6 font-medium line-clamp-3">
+        {service.description}
+      </p>
+
+      {/* Tech / Feature Tags */}
+      <div className="flex flex-wrap gap-1.5 mb-6">
+        {service.pills.map((pill, i) => (
+          <span 
+            key={i} 
+            className="text-[10px] font-semibold px-2.5 py-1 rounded-md bg-black/[0.02] border border-black/5 text-[#050505]/70"
+          >
+            {pill}
+          </span>
+        ))}
+      </div>
     </div>
 
-    <h3 className="text-2xl font-bold mb-4 text-[#050505] group-hover:text-primary transition-colors">{service.title}</h3>
-    <p className="text-[#050505]/50 leading-relaxed mb-6">
-      {service.description}
-    </p>
-
-    <div className="flex items-center gap-2 text-sm font-bold text-[#050505]/40 group-hover:text-[#050505] transition-colors">
-      Learn more <ArrowRight className="w-4 h-4" />
+    {/* Footer CTA & Crawlable HTML Link */}
+    <div className="pt-4 border-t border-black/5">
+      <div className="flex items-center justify-between text-xs font-bold text-[#050505]/60 group-hover:text-primary transition-colors mb-2">
+        <span>Explore Architecture & Deliverables</span>
+        <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+      </div>
+      <Link 
+        to={`/services/${service.slug}`}
+        onClick={(e) => e.stopPropagation()}
+        className="text-[11px] font-bold text-primary hover:underline inline-flex items-center gap-1"
+      >
+        <span>View {service.title} details</span>
+        <ChevronRight className="w-3 h-3" />
+      </Link>
     </div>
   </motion.div>
 );

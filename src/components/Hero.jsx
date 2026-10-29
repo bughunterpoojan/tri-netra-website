@@ -1,15 +1,12 @@
-import React, { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Play, Database, MessageSquare, Mail, Calendar, CheckCircle2, Zap, Users, Phone, BarChart3, ShieldCheck } from "lucide-react";
+import { useRef } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Play, Database, MessageSquare, Mail, CheckCircle2, Zap, Users, Phone } from "lucide-react";
 import { useMagnetic } from "../hooks/useMagnetic";
 import { CONFIG } from "../config";
 
 const Hero = () => {
   const containerRef = useRef(null);
   const magneticButtonRef = useMagnetic();
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
 
   return (
     <section 
@@ -34,7 +31,7 @@ const Hero = () => {
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6 backdrop-blur-sm shadow-sm"
         >
           <span className="flex h-2 w-2 rounded-full bg-primary animate-ping" />
-          <span className="text-xs font-black uppercase tracking-[0.2em] text-primary">TriNetra Technologies • Premier AI Automation Agency</span>
+          <span className="text-xs font-black uppercase tracking-[0.2em] text-primary">TriNetra Technologies • Full-Suite IT Services & AI Solutions</span>
         </motion.div>
 
         <motion.h1 
@@ -43,42 +40,18 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-5xl md:text-8xl font-black tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-[#050505] to-[#050505]/60 leading-[1.1]"
         >
-          We don't sell AI, <br />
-          We sell you your <span className="text-primary italic">growth.</span>
+          Custom Software, Apps & <br className="hidden sm:inline" />
+          Intelligent <span className="text-primary italic">AI Solutions.</span>
         </motion.h1>
 
         <motion.p 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg md:text-xl text-[#050505]/60 max-w-3xl mx-auto mb-8 font-medium leading-relaxed"
+          className="text-lg md:text-xl text-[#050505]/65 max-w-3xl mx-auto mb-10 font-medium leading-relaxed"
         >
-          <strong className="text-[#050505] font-bold">TriNetra Technologies</strong> builds high-performance <strong className="text-[#050505] font-bold">WhatsApp AI agents</strong>, automated <strong className="text-[#050505] font-bold">lead generation pipelines</strong>, real-time <strong className="text-[#050505] font-bold">CRM workflows</strong>, and autonomous AI employees that eliminate manual bottlenecks and scale your revenue 24/7.
+          TriNetra Technologies engineers modern web applications, native mobile apps, enterprise cloud software, and autonomous AI systems designed to scale your business.
         </motion.p>
-
-        {/* High-Intent Search Keyword Tags */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto mb-10"
-        >
-          {[
-            "WhatsApp AI Agent",
-            "Custom AI Workflows",
-            "CRM Automation (HubSpot & n8n)",
-            "AI Cold Email Systems",
-            "Autonomous AI Employees",
-            "24/7 Lead Qualification"
-          ].map((tag, idx) => (
-            <span
-              key={idx}
-              className="text-xs font-semibold px-3 py-1.5 rounded-full bg-black/[0.03] border border-black/5 text-[#050505]/70 hover:border-primary/30 transition-colors"
-            >
-              #{tag}
-            </span>
-          ))}
-        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -96,7 +69,10 @@ const Hero = () => {
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity" />
           </button>
-          <button className="px-8 py-4 bg-black/5 border border-black/10 rounded-2xl font-bold flex items-center gap-2 hover:bg-black/10 transition-all hover:scale-105 active:scale-95 text-[#050505]">
+          <button 
+            onClick={() => { const el = document.getElementById("demo"); if (el) el.scrollIntoView({ behavior: "smooth" }); }} 
+            className="px-8 py-4 bg-black/5 border border-black/10 rounded-2xl font-bold flex items-center gap-2 hover:bg-black/10 transition-all hover:scale-105 active:scale-95 text-[#050505] cursor-pointer"
+          >
             <Play className="w-5 h-5 fill-[#050505]" /> Watch Demo
           </button>
         </motion.div>
@@ -178,8 +154,8 @@ const Hero = () => {
                 <motion.div
                   key={i}
                   animate={{
-                    x: [Math.random() * 1000, Math.random() * 1000],
-                    y: [Math.random() * 200, Math.random() * 200],
+                    x: [(i * 160) % 900, (i * 220 + 80) % 900],
+                    y: [(i * 35) % 180, (i * 55 + 20) % 180],
                     opacity: [0, 0.3, 0]
                   }}
                   transition={{ duration: 5 + i, repeat: Infinity, ease: "linear" }}
