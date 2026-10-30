@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const DEFAULT_TITLE = "Custom Software, Mobile Apps & AI Solutions | TriNetra Technologies";
+const DEFAULT_TITLE = "Custom Software & AI Solutions | TriNetra Technologies";
 const DEFAULT_DESCRIPTION = "TriNetra Technologies is a full-cycle IT services firm engineering custom web applications, native mobile apps, enterprise software, and autonomous AI automation.";
 const DEFAULT_CANONICAL = "https://www.trinetra-technologies.in/";
 const DEFAULT_IMAGE = "https://www.trinetra-technologies.in/logo.png";

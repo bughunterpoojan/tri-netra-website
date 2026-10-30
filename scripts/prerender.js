@@ -11,7 +11,7 @@ const pages = [
   // 1. Custom Web Applications
   {
     path: "services/web-development",
-    title: "Custom Web Application Development | TriNetra Technologies",
+    title: "Web Application Development | TriNetra Technologies",
     description: "Scale your business with full-stack custom web applications and SaaS platforms built on Next.js, React, and Node.js by TriNetra Technologies.",
     canonical: "https://www.trinetra-technologies.in/services/web-development",
     h1: "Custom Web Application & SaaS Engineering",
@@ -21,7 +21,7 @@ const pages = [
   // 2. Mobile App Development
   {
     path: "services/mobile-app-development",
-    title: "Mobile App Development (iOS & Android) | TriNetra Technologies",
+    title: "Mobile App Development iOS & Android | TriNetra",
     description: "High-performance cross-platform iOS and Android mobile apps engineered with Flutter and React Native by TriNetra Technologies.",
     canonical: "https://www.trinetra-technologies.in/services/mobile-app-development",
     h1: "Mobile App Development (iOS & Android)",
@@ -31,7 +31,7 @@ const pages = [
   // 3. UI/UX Design Systems
   {
     path: "services/ui-ux-design",
-    title: "UI/UX Design & Design Systems | TriNetra Technologies",
+    title: "UI/UX Design & Design Systems | TriNetra",
     description: "Interactive Figma prototypes, design systems, and conversion-optimized UX design for modern digital products by TriNetra Technologies.",
     canonical: "https://www.trinetra-technologies.in/services/ui-ux-design",
     h1: "UI/UX Design & Enterprise Design Systems",
@@ -41,7 +41,7 @@ const pages = [
   // 4. API & Microservices
   {
     path: "services/api-microservices",
-    title: "Enterprise API & Microservices Architecture | TriNetra Technologies",
+    title: "API & Microservices Architecture | TriNetra",
     description: "High-throughput RESTful and GraphQL APIs, cloud microservices, and secure API gateways engineered by TriNetra Technologies.",
     canonical: "https://www.trinetra-technologies.in/services/api-microservices",
     h1: "Enterprise API & Microservices Architecture",
@@ -51,7 +51,7 @@ const pages = [
   // 5. WhatsApp Automation
   {
     path: "services/whatsapp-automation",
-    title: "WhatsApp AI Agents & Business API Automation | TriNetra Technologies",
+    title: "WhatsApp Automation & AI Agents | TriNetra",
     description: "Autonomous 24/7 WhatsApp AI agents for instant lead qualification, meeting scheduling, and support automation by TriNetra Technologies.",
     canonical: "https://www.trinetra-technologies.in/services/whatsapp-automation",
     h1: "WhatsApp AI & Conversational Automation",
@@ -61,7 +61,7 @@ const pages = [
   // 6. AI Voice Agents
   {
     path: "services/ai-voice-agents",
-    title: "Conversational AI Voice Calling Agents | TriNetra Technologies",
+    title: "AI Voice Calling Agents | TriNetra Technologies",
     description: "Ultra-low latency conversational AI voice agents for inbound receptionist calls and outbound sales outreach by TriNetra Technologies.",
     canonical: "https://www.trinetra-technologies.in/services/ai-voice-agents",
     h1: "AI Voice Calling Agents & Telephony",
@@ -71,7 +71,7 @@ const pages = [
   // 7. Workflow RPA
   {
     path: "services/ai-automation",
-    title: "Enterprise Workflow Automation & RPA | TriNetra Technologies",
+    title: "Enterprise Workflow Automation | TriNetra",
     description: "Zero-touch business process automation, n8n orchestration, and custom Python automation pipelines by TriNetra Technologies.",
     canonical: "https://www.trinetra-technologies.in/services/ai-automation",
     h1: "Enterprise Workflow Automation & RPA",
@@ -81,7 +81,7 @@ const pages = [
   // 8. CRM ERP Automation
   {
     path: "services/crm-erp-automation",
-    title: "CRM & ERP Two-Way Sync Automation | TriNetra Technologies",
+    title: "CRM & ERP Two-Way Sync | TriNetra Technologies",
     description: "Real-time bidirectional synchronization between HubSpot, Salesforce, Zoho CRM, and ERP systems by TriNetra Technologies.",
     canonical: "https://www.trinetra-technologies.in/services/crm-erp-automation",
     h1: "CRM & ERP Two-Way Sync Automation",
@@ -91,7 +91,7 @@ const pages = [
   // 9. Custom AI Solutions & RAG
   {
     path: "services/custom-ai-solutions",
-    title: "Custom AI Solutions & Private RAG Employees | TriNetra Technologies",
+    title: "Custom AI Solutions & Private RAG | TriNetra",
     description: "Private AI employees, internal company knowledge base RAG, and fine-tuned LLM solutions engineered by TriNetra Technologies.",
     canonical: "https://www.trinetra-technologies.in/services/custom-ai-solutions",
     h1: "Custom AI Solutions & Private RAG",
@@ -101,7 +101,7 @@ const pages = [
   // 10. IT Consulting
   {
     path: "services/it-consulting",
-    title: "Strategic IT Consulting & Virtual CTO | TriNetra Technologies",
+    title: "Strategic IT Consulting & Virtual CTO | TriNetra",
     description: "Technical due diligence, software architecture audits, and fractional CTO advisory for growing startups by TriNetra Technologies.",
     canonical: "https://www.trinetra-technologies.in/services/it-consulting",
     h1: "Strategic IT Consulting & Virtual CTO",
@@ -111,7 +111,7 @@ const pages = [
   // 11. Dedicated Teams
   {
     path: "services/dedicated-engineering-teams",
-    title: "Dedicated Engineering Teams & Staff Augmentation | TriNetra Technologies",
+    title: "Dedicated Engineering Teams | TriNetra",
     description: "Hire vetted senior full-stack developers, React, Node.js, Python, and Flutter engineers from India with TriNetra Technologies.",
     canonical: "https://www.trinetra-technologies.in/services/dedicated-engineering-teams",
     h1: "Dedicated Engineering Teams & Staff Augmentation",
@@ -121,7 +121,7 @@ const pages = [
   // 12. Software Maintenance & SLA
   {
     path: "services/software-maintenance-sla",
-    title: "Software Maintenance & 24/7 SLA Support | TriNetra Technologies",
+    title: "Software Maintenance & 24/7 SLA | TriNetra",
     description: "Guaranteed 24/7 application uptime monitoring, bug fixing, and continuous software modernization SLA by TriNetra Technologies.",
     canonical: "https://www.trinetra-technologies.in/services/software-maintenance-sla",
     h1: "Software Maintenance & 24/7 SLA Support",

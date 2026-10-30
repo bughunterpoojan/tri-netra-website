@@ -14,7 +14,7 @@ const HomePage = () => {
   return (
     <>
       <SEO
-        title="AI Automation & Software Development Company | TriNetra"
+        title="Custom Software & AI Solutions | TriNetra Technologies"
         description="TriNetra Technologies is a full-cycle IT services firm engineering custom web applications, native mobile apps, enterprise software, and autonomous AI automation."
         canonical="https://www.trinetra-technologies.in/"
         keywords="TriNetra Technologies, custom software development, web application development, mobile app development, AI automation services, AI agent development, WhatsApp automation, AI voice agents, Ahmedabad IT company"
