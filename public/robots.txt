@@ -1,9 +1,8 @@
-# Robots.txt for TriNetra Technologies (https://www.trinetra-technologies.in)
+# Robots.txt for TriNetra Technologies
+# https://www.trinetra-technologies.in
+
 User-agent: *
 Allow: /
 
-# Sitemaps
+# Sitemap Location
 Sitemap: https://www.trinetra-technologies.in/sitemap.xml
-
-# Crawl-delay
-Crawl-delay: 1
