@@ -9,14 +9,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-16">
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-6 group inline-flex" aria-label="TriNetra Technologies Home">
-              <img 
-                src="/logo.png" 
-                alt="TriNetra Technologies - AI Automation Agency and IT Services" 
+              <img
+                src="/logo.png"
+                alt="TriNetra Technologies - AI Automation Agency and IT Services"
                 width="48"
                 height="48"
                 loading="lazy"
                 decoding="async"
-                className="w-12 h-12 object-contain" 
+                className="w-12 h-12 object-contain"
               />
               <span className="text-3xl font-black tracking-tighter text-[#050505]">TriNetra Technologies</span>
             </Link>
@@ -44,15 +44,19 @@ const Footer = () => {
 
           <div>
             <h3 className="font-black text-[#050505] uppercase tracking-widest text-xs mb-6">IT Services & Solutions</h3>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-2.5 text-sm">
+              <FooterLink to="/services/web-development">Custom Web Applications</FooterLink>
+              <FooterLink to="/services/mobile-app-development">Mobile App Development</FooterLink>
               <FooterLink to="/services/whatsapp-automation">WhatsApp AI Automation</FooterLink>
               <FooterLink to="/services/ai-voice-agents">AI Voice Calling Agents</FooterLink>
               <FooterLink to="/services/ai-automation">Enterprise Workflow RPA</FooterLink>
+              <FooterLink to="/services/crm-erp-automation">CRM & ERP Two-Way Sync</FooterLink>
               <FooterLink to="/services/custom-ai-solutions">Custom AI Employees (RAG)</FooterLink>
-              <FooterLink to="/services/web-development">Custom Web Applications</FooterLink>
-              <FooterLink to="/services/mobile-app-development">Mobile App Development</FooterLink>
+              <FooterLink to="/services/ui-ux-design">UI/UX Design Systems</FooterLink>
+              <FooterLink to="/services/api-microservices">API & Microservices Architecture</FooterLink>
               <FooterLink to="/services/dedicated-engineering-teams">Dedicated Engineering Teams</FooterLink>
               <FooterLink to="/services/it-consulting">Strategic IT Consulting</FooterLink>
+              <FooterLink to="/services/software-maintenance-sla">Software Maintenance & SLA</FooterLink>
             </ul>
           </div>
 
@@ -66,7 +70,7 @@ const Footer = () => {
                 <MapPin className="w-4 h-4 shrink-0 text-primary" /> Ahmedabad, Gujarat, India
               </li>
               <li className="flex items-start gap-3 text-[#050505]/60 hover:text-[#050505] transition-colors cursor-default text-xs">
-                <Phone className="w-4 h-4 shrink-0 mt-0.5 text-primary" /> 
+                <Phone className="w-4 h-4 shrink-0 mt-0.5 text-primary" />
                 <div className="flex flex-col gap-1 leading-tight font-medium">
                   <span>+91 9274092055</span>
                   <span>+91 9274421856</span>
@@ -103,10 +107,10 @@ const Footer = () => {
 };
 
 const SocialIcon = ({ icon, href, ariaLabel }) => (
-  <a 
-    href={href} 
-    target="_blank" 
-    rel="noopener noreferrer" 
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     aria-label={ariaLabel}
     className="w-10 h-10 rounded-xl glass flex items-center justify-center text-[#050505]/60 hover:text-primary hover:border-primary/50 transition-all"
   >
