@@ -242,7 +242,7 @@ function prerender() {
       </p>
 
       <div style="margin-bottom: 4rem;">
-        <a href="https://cal.com/trinetra-technologies" style="display: inline-block; padding: 0.85rem 2rem; background: #0066ff; color: #ffffff; text-decoration: none; border-radius: 1rem; font-weight: 700; font-size: 0.95rem; margin-right: 1rem;">Book Strategy Call</a>
+        <a href="/#pricing" style="display: inline-block; padding: 0.85rem 2rem; background: #0066ff; color: #ffffff; text-decoration: none; border-radius: 1rem; font-weight: 700; font-size: 0.95rem; margin-right: 1rem;">Book Strategy Call</a>
         <a href="/#services" style="display: inline-block; padding: 0.85rem 2rem; background: rgba(0,0,0,0.05); color: #050505; text-decoration: none; border-radius: 1rem; font-weight: 700; font-size: 0.95rem;">Explore Other Services</a>
       </div>
     </main>

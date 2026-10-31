@@ -127,7 +127,8 @@ const Navbar = () => {
           // fallback
         }
       }
-      window.open(`https://cal.com/${CONFIG.calLink}`, "_blank", "noopener,noreferrer");
+      const bookingUrl = CONFIG.calLink.startsWith("http") ? CONFIG.calLink : `https://cal.com/${CONFIG.calLink}`;
+      window.open(bookingUrl, "_blank", "noopener,noreferrer");
     }
   };
 
