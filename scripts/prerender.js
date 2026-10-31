@@ -205,6 +205,7 @@ function prerender() {
 
     // 6. Replace Pre-rendered Content inside <div id="root">
     const pagePreRenderContent = `
+    <div id="seo-static-content" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">
     <header style="padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,0.05);">
       <div style="display: flex; align-items: center; gap: 0.75rem;">
         <a href="/" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
@@ -255,6 +256,7 @@ function prerender() {
         <a href="/terms" style="color: #050505; text-decoration: none; margin-left: 0.5rem;">Terms of Service</a>
       </p>
     </footer>
+    </div>
     `;
 
     // Replace <div id="root">...</div> content
